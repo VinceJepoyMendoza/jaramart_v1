@@ -1,0 +1,66 @@
+// Login page
+
+.login {
+  background: url('../../img/login.jpg') no-repeat center center/cover;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  &-form {
+    background: rgba($secondary, 0.8);
+    width: 40%;
+    padding: 3rem 4rem 0.25rem 4rem;
+    border-radius: $radius;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    div {
+      margin-bottom: 2rem;
+
+      input {
+        padding: 0.75rem 1rem;
+        width: 100%;
+        @include inputFocus;
+      }
+
+      input[type='password'] {
+        font-weight: 900;
+        &::placeholder {
+          font-weight: 400;
+        }
+      }
+
+      &:last-child {
+        margin-top: 2rem;
+        text-align: center;
+      }
+
+      button {
+        background: $primary;
+        color: #fff;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $xl) {
+  .login {
+    &-form {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  .login {
+    &-form {
+      width: 80%;
+    }
+  }
+}

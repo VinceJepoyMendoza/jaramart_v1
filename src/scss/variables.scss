@@ -1,0 +1,52 @@
+// Primary color
+// darker shades of primary color
+$clr-blue-1: hsl(205, 80%, 23%);
+$clr-blue-2: hsl(205, 80%, 30%);
+$clr-blue-3: hsl(205, 80%, 34%);
+$clr-blue-3: hsl(205, 80%, 34%);
+$clr-blue-4: hsl(205, 80%, 39%);
+// Primary/main-color
+$clr-blue-5: hsl(205, 85%, 44%);
+// lighter shades of primary color
+$clr-blue-6: hsl(205, 90%, 49%);
+$clr-blue-7: hsl(205, 90%, 54%);
+$clr-blue-8: hsl(205, 90%, 69%);
+$clr-blue-9: hsl(205, 90%, 75%);
+$clr-blue-10: hsl(205, 90%, 80%);
+// ligher shade of secondary color
+$clr-grey-1: hsl(232, 17%, 35%);
+$clr-grey-2: hsl(232, 17%, 40%);
+$clr-grey-3: hsl(232, 17%, 45%);
+$clr-grey-4: hsl(232, 17%, 50%);
+$clr-grey-5: hsl(232, 17%, 55%);
+$clr-grey-6: hsl(232, 17%, 60%);
+$clr-grey-7: hsl(232, 17%, 70%);
+$clr-grey-8: hsl(232, 17%, 78%);
+$clr-grey-9: hsl(232, 17%, 85%);
+// Secondary color
+$clr-grey-10: hsl(232, 17%, 95%);
+$clr-grey-11: hsl(232, 20%, 95%);
+
+// Breakpoints
+$xxl: 1400px;
+$xl: 1200px;
+$lg: 992px;
+$md: 768px;
+$sm: 576px;
+
+// Font size
+$fntS-1: 0.65rem;
+$fntS-2: 0.775rem;
+$fntS-3: 0.875rem;
+$fntS-4: 1rem;
+$fntS-5: 1.3rem;
+$fntS-6: 2.5rem;
+
+// Theme
+$primary: $clr-blue-5;
+$secondary: $clr-grey-10;
+$transition: all 0.3s ease-in-out;
+$max-width: 1250px;
+$spacing: 0.1rem;
+$radius: 20px;
+$border-size: 2px;
