@@ -1,0 +1,133 @@
+// Primary font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=Urbanist:wght@100;300;400;500;600;700;800&display=swap');
+// Heading font
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1:wght@100;300;400;500;600;700;800&family=Raleway:wght@300;400;600;800&display=swap');
+
+// font-family: 'M PLUS 1', sans-serif;
+
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: $fntS-4;
+  line-height: 1.5;
+  background: $clr-grey-10;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  font-weight: 400;
+}
+
+img {
+  width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+h4 {
+  font-size: 0.875rem;
+}
+
+input {
+  font-family: 'Urbanist', sans-serif;
+  border: none;
+  padding: 10px;
+  outline: none;
+  border-radius: $radius;
+  font-size: $fntS-5;
+}
+
+@media screen and (min-width: $lg) {
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  h3 {
+    font-size: 1.75rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+    font-weight: 600;
+  }
+
+  body {
+    font-size: $fntS-4;
+  }
+}
+
+section {
+  padding: 3rem 1rem;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.logo {
+  display: flex;
+  color: #000;
+  font-size: $fntS-6;
+  align-items: center;
+  transition: $transition;
+}
+
+@media screen and (max-width: $xl) {
+  // section {
+  //   padding: 2.5rem 0.75rem;
+  // }
+
+  .logo {
+    font-size: $fntS-5;
+  }
+
+  input {
+    font-size: $fntS-3;
+  }
+}
