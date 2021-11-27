@@ -7,10 +7,21 @@ const Reducer = (state, action) => {
   const { name, password: passDb } = users[0]
   let logStatus = false
 
+  // Get all products
   if (action.type === 'GET_PRODUCTS') {
     return {
       ...state,
       products: action.payload,
+      isLoading: false,
+    }
+  }
+
+  // Get all products from certain category
+  if (action.type === 'GET_CATEGORY_ITEMS') {
+    console.log(action.payload)
+    return {
+      ...state,
+      categoryProducts: action.payload,
       isLoading: false,
     }
   }

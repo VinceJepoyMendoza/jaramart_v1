@@ -22,17 +22,17 @@ const Products = () => {
             return (
               <div className='products-content__item' key={`product-${id}`}>
                 <img src={image} alt={title} />
-                {/* <div className='products-content__item__btn'>
-                  <button type='button' className='btn'>
+                <div className='products-content__item__btn'>
+                  <button className='btn'>
                     <BsCart3 />
                   </button>
-                  <button type='button' className='btn'>
+                  <button className='btn'>
                     <FiSearch />
                   </button>
-                  <button type='button' className='btn'>
+                  <button className='btn'>
                     <FiHeart />
                   </button>
-                </div> */}
+                </div>
               </div>
             )
           })}

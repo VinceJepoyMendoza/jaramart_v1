@@ -1,15 +1,10 @@
 import React, { useRef } from 'react'
-// import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router'
 import { categories } from '../data'
 
 const Category = () => {
   const categoryBtn = useRef(null)
-  // const navigate = useNavigate()
-
-  const getCategory = ({ title }) => {
-    // navigate('/')
-    console.log(`Navigate to ${title} Category`)
-  }
+  const navigate = useNavigate()
 
   return (
     <section className='category'>
@@ -18,13 +13,13 @@ const Category = () => {
         <h3>Get a look of what we're offerings</h3>
       </div>
       <div className='category-content'>
-        {categories.map((item, index) => {
-          const { title, img } = item
+        {categories.map((item) => {
+          const { title, img, id } = item
           return (
             <span
-              key={`category-${index}`}
+              key={`category-${id}`}
               ref={categoryBtn}
-              onClick={() => getCategory({ title })}
+              onClick={() => navigate(`/category/${title}`)}
             >
               <h1>{title}</h1>
               <img src={img} alt={title} />

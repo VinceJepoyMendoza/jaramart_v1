@@ -88,18 +88,22 @@ const features = [
 
 const categories = [
   {
+    id: 1,
     title: "men's clothing",
     img: img5,
   },
   {
+    id: 2,
     title: "women's clothing",
     img: img6,
   },
   {
+    id: 3,
     title: 'jewelery',
     img: img8,
   },
   {
+    id: 4,
     title: 'electronics',
     img: img7,
   },

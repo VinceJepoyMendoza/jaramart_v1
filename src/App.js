@@ -14,6 +14,7 @@ import Likes from './pages/Likes'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Error from './pages/Error'
+import SingleCategory from './pages/SingleCategory'
 
 // Import navbar
 import Navbar from './components/Navbar'
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/likes' element={<Likes />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/category/:cgryTitle' element={<SingleCategory />} />
           <Route path='/product/:prodId' element={<Product />} />
           <Route path='*' element={<Error />} />
         </Routes>

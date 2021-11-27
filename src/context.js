@@ -1,5 +1,5 @@
 import React, { useContext, useReducer, useEffect } from 'react'
-import { products } from './data'
+// import { products } from './data'
 import reducer from './reducer'
 // Importing dummy data
 // import { products } from './data'
@@ -8,6 +8,9 @@ const AppContext = React.createContext()
 
 const initialState = {
   products: [],
+  categoryProducts: [],
+  isLoading: false,
+  isLoggedIn: false,
   // product: {
   //   id: 1,
   //   title: '',
@@ -20,18 +23,17 @@ const initialState = {
   //     count: 0,
   //   },
   // },
-  isLoading: false,
-  isLoggedIn: false,
 }
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const url = `https://fakestoreapi.com/products`
+  const categoryUrl = `https://fakestoreapi.com/products/category/`
 
   // Getting all the data from API
   useEffect(() => {
     const fetchData = async () => {
-      dispatch({ type: 'LOADING' })
+      loading()
       const resp = await fetch(url)
       const data = await resp.json()
       dispatch({ type: 'GET_PRODUCTS', payload: data })
@@ -54,6 +56,17 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'LOADING' })
   }
 
+  // getting category products from categoryProducts
+  const getCategoryItems = (cgryTitle) => {
+    loading()
+    const cgryFetch = async () => {
+      const resp = await fetch(`${categoryUrl}${cgryTitle}`)
+      const data = await resp.json()
+      dispatch({ type: 'GET_CATEGORY_ITEMS', payload: data })
+    }
+    cgryFetch()
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -61,6 +74,7 @@ const AppProvider = ({ children }) => {
         loginAcc,
         logoutAcc,
         loading,
+        getCategoryItems,
       }}
     >
       {children}

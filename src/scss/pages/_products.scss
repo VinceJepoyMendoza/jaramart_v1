@@ -3,31 +3,21 @@
 .products {
   &-content {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1em;
+    // margin: 0 auto;
+    justify-items: center;
     // max-width: 100vw !important;
 
     &__item {
       @include border-sm;
       @include shadow-sm;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
       background: #fff;
       border-radius: $radius;
       text-align: center;
-      cursor: pointer;
       position: relative;
-
-      &__btn {
-        // @include absolute-center;
-        // z-index: 12;
-        // opacity: 0;
-        transition: $transition;
-
-        button {
-          display: inline-block;
-          background: $clr-grey-1;
-        }
-      }
+      width: 100%;
 
       img {
         width: 200px;
@@ -36,14 +26,33 @@
         transition: $transition;
       }
 
+      &__btn {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+
+        button {
+          transition: $transition;
+
+          svg {
+            font-size: $fntS-5;
+            color: $primary;
+          }
+
+          &:hover {
+            transform: scale(1.2);
+
+            svg {
+              color: $primary;
+            }
+          }
+        }
+      }
+
       &:hover {
         img {
           transform: scale(1.1);
           opacity: 0.5;
-        }
-
-        &__btn {
-          background: red;
         }
       }
     }
@@ -52,8 +61,8 @@
 
 // Loader
 .loader {
-  width: 50%;
-  height: 50%;
+  width: 100%;
+  height: 100%;
   display: block;
   margin: 0 auto;
 }
