@@ -1,5 +1,4 @@
 import React from 'react'
-import image from '../img/about-us.jpg'
 import { BsTruck } from 'react-icons/bs'
 import { MdOutlinePayment } from 'react-icons/md'
 import { RiCustomerService2Fill } from 'react-icons/ri'
@@ -13,7 +12,10 @@ const about = () => {
       </div>
       <div className='container'>
         <div className='about-content'>
-          <img src={image} alt='about us' />
+          <img
+            src='https://images.pexels.com/photos/3985062/pexels-photo-3985062.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'
+            alt='about us'
+          />
           <div className='about-content__info'>
             <SectionInfo />
             <SectionFooter />

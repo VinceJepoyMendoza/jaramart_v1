@@ -18,10 +18,18 @@ const Reducer = (state, action) => {
 
   // Get all products from certain category
   if (action.type === 'GET_CATEGORY_ITEMS') {
-    console.log(action.payload)
     return {
       ...state,
       categoryProducts: action.payload,
+      isLoading: false,
+    }
+  }
+
+  // Fetch single product from api
+  if (action.type === 'FECT_SINGLE_PRODUCT') {
+    return {
+      ...state,
+      singleProduct: action.payload,
       isLoading: false,
     }
   }

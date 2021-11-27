@@ -1,0 +1,7 @@
+//  Products from a single category
+
+.cgry-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1em;
+}

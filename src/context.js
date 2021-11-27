@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useEffect } from 'react'
+import React, { useContext, useReducer, useEffect, useCallback } from 'react'
 // import { products } from './data'
 import reducer from './reducer'
 // Importing dummy data
@@ -11,23 +11,12 @@ const initialState = {
   categoryProducts: [],
   isLoading: false,
   isLoggedIn: false,
-  // product: {
-  //   id: 1,
-  //   title: '',
-  //   price: 0,
-  //   category: '',
-  //   image: '',
-  //   description: '',
-  //   rating: {
-  //     rate: 0,
-  //     count: 0,
-  //   },
-  // },
+  singleProduct: {},
 }
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  const url = `https://fakestoreapi.com/products`
+  const url = `https://fakestoreapi.com/products/`
   const categoryUrl = `https://fakestoreapi.com/products/category/`
 
   // Getting all the data from API
@@ -67,6 +56,17 @@ const AppProvider = ({ children }) => {
     cgryFetch()
   }
 
+  // Getting single products from api
+  const fetchSingleProduct = useCallback(
+    async (id) => {
+      loading()
+      const resp = await fetch(`${url}${id}`)
+      const data = await resp.json()
+      dispatch({ type: 'FECT_SINGLE_PRODUCT', payload: data })
+    },
+    [url]
+  )
+
   return (
     <AppContext.Provider
       value={{
@@ -75,6 +75,7 @@ const AppProvider = ({ children }) => {
         logoutAcc,
         loading,
         getCategoryItems,
+        fetchSingleProduct,
       }}
     >
       {children}
