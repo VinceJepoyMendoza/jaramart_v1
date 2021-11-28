@@ -7,16 +7,17 @@ import Loading from '../components/Loading'
 const ProductOV = () => {
   const { prodId } = useParams()
   const { fetchSingleProduct, singleProduct, isLoading } = useGlobalContext()
-  const { id, title, price, description, category, image, rating } =
-    singleProduct
-  // const ceilRate = Math.ceil(rating.rate)
+  const { title, price, description, category, image, rating } = singleProduct
+  const ceilRate = Math.ceil(rating?.rate)
 
   // Making stars from rating
-  // const Stars = (rate) => {
-  //   for (let i = 0; i < rate; i++) {
-  //     return <BsStarFill />
-  //   }
-  // }
+  const generateStars = () => {
+    let stars = []
+    for (let i = 0; i < ceilRate; i++) {
+      stars.push(<BsStarFill key={i} />)
+    }
+    return stars
+  }
 
   useEffect(() => {
     fetchSingleProduct(prodId)
@@ -26,21 +27,36 @@ const ProductOV = () => {
     <Loading />
   ) : (
     <section className='product-overview'>
-      <img src={image} alt={title} style={{ width: '50%', height: '500px' }} />
-      <div className='product-overview-content'>
-        <h4>{title}</h4>
-        <p>{description}</p>
-        <h3>${price}</h3>
-        <h1>bukas naman na bugbog nako sa bug eh haahshahhaa</h1>
-        <span>
-          {/* <p>{rating.rate}</p>
-          <Stars rate={ceilRate} />
-          <p>{rating.count}</p> */}
-        </span>
-        <div className='product-overview-content__item'>
-          {/* buttons here */}
+      <div className='container'>
+        <img
+          src={image}
+          alt={title}
+          style={{ width: '50%', height: '500px' }}
+        />
+        <div className='product-overview-content'>
+          <div>
+            <h4>{title}</h4>
+            <small>{category}</small>
+          </div>
+          <div>
+            <h3>${price}</h3>
+            <p className='lead'>{description}</p>
+          </div>
+          {/* <h1>bukas naman na bugbog nako sa bug eh haahshahhaa</h1> */}
+          <div>
+            <p>{rating?.rate}</p>
+            <b>{generateStars()}</b>
+            <p>{rating?.count}</p>
+          </div>
+          <div className='product-overview-content__item'>
+            {/* buttons here */}
+          </div>
         </div>
       </div>
+      <h1>
+        napaka punyetang bug yan! '?' lang pala katapat inabot pa ng 2 gabi
+        hahahsahhjah
+      </h1>
     </section>
   )
 }

@@ -1,8 +1,5 @@
 import React, { useContext, useReducer, useEffect, useCallback } from 'react'
-// import { products } from './data'
 import reducer from './reducer'
-// Importing dummy data
-// import { products } from './data'
 
 const AppContext = React.createContext()
 
@@ -46,15 +43,15 @@ const AppProvider = ({ children }) => {
   }
 
   // getting category products from categoryProducts
-  const getCategoryItems = (cgryTitle) => {
-    loading()
-    const cgryFetch = async () => {
+  const getCategoryItems = useCallback(
+    async (cgryTitle) => {
+      loading()
       const resp = await fetch(`${categoryUrl}${cgryTitle}`)
       const data = await resp.json()
       dispatch({ type: 'GET_CATEGORY_ITEMS', payload: data })
-    }
-    cgryFetch()
-  }
+    },
+    [categoryUrl]
+  )
 
   // Getting single products from api
   const fetchSingleProduct = useCallback(

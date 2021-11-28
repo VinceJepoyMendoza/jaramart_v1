@@ -33,6 +33,3 @@ const Products = () => {
 }
 
 export default Products
-
-// btn/svg hover not working
-// center btn

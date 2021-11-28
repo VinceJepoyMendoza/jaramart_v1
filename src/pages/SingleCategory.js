@@ -10,8 +10,7 @@ const SingleCategory = () => {
 
   useEffect(() => {
     getCategoryItems(cgryTitle)
-    // eslint-disable-next-line
-  }, [cgryTitle])
+  }, [getCategoryItems, cgryTitle])
 
   return isLoading ? (
     <Loading />
