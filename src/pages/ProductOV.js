@@ -7,14 +7,30 @@ import Loading from '../components/Loading'
 
 const ProductOV = () => {
   const { prodId } = useParams()
-  const { fetchSingleProduct, singleProduct, isLoading } = useGlobalContext()
-  const { title, price, description, category, image, rating } = singleProduct
-  const ceilRate = Math.ceil(rating?.rate)
+  const {
+    fetchSingleProduct,
+    singleProduct,
+    isLoading,
+    toggleWishlist,
+    toggleCart,
+    // singleProduct
+  } = useGlobalContext()
+  const {
+    title,
+    price,
+    description,
+    category,
+    image,
+    rating,
+    isInWishlist,
+    isInCart,
+  } = singleProduct
+  const finalRate = Math.round(rating?.rate)
 
   // Making stars from rating
   const generateStars = () => {
     let stars = []
-    for (let i = 0; i < ceilRate; i++) {
+    for (let i = 0; i < finalRate; i++) {
       stars.push(<BsStarFill key={i} />)
     }
     return stars
@@ -54,12 +70,25 @@ const ProductOV = () => {
               <p>({rating?.count})</p>
             </div>
             <div className='product-overview-content__btn'>
-              <button type='button' className='btn btn-overview'>
-                <p> add to your wishlist</p>
+              <button
+                type='button'
+                className='btn btn-overview'
+                onClick={toggleWishlist}
+              >
+                <p>
+                  {' '}
+                  {isInWishlist
+                    ? 'added to your wishlist'
+                    : 'add to your wishlist'}{' '}
+                </p>
                 <FiHeart style={{ fontSize: '1.4rem' }} />
               </button>
-              <button type='button' className='btn btn-overview'>
-                <p>add to your cart</p>
+              <button
+                type='button'
+                className='btn btn-overview'
+                onClick={toggleCart}
+              >
+                <p> {isInCart ? 'added to your cart' : 'add to your cart'} </p>
                 <BsCart3 style={{ fontSize: '1.4rem' }} />
               </button>
             </div>

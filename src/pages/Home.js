@@ -19,6 +19,7 @@ const Home = () => {
       <Testimonials />
       <Contact />
       <Footer />
+      <h1>Bukas naman ulit madami dami din akong nagawa hahsahahah</h1>
     </>
   )
 }

@@ -34,6 +34,31 @@ const Reducer = (state, action) => {
     }
   }
 
+  if (action.type === 'TOGGLE_WISHLIST') {
+    console.log('toggle wishtlist')
+    const newProd = {
+      ...state.singleProduct,
+      isInWishlist: !state.singleProduct.isInWishlist,
+    }
+    return {
+      ...state,
+      singleProduct: newProd,
+    }
+  }
+
+  if (action.type === 'TOGGLE_CART') {
+    console.log('toggle cart')
+    const newProd = {
+      ...state.singleProduct,
+      isInCart: !state.singleProduct.isInCart,
+    }
+    return {
+      ...state,
+      singleProduct: newProd,
+    }
+  }
+
+  // Authentication related section
   if (action.type === 'LOGIN_ACC') {
     const { username, password, redirect, setMessage, setIsError } =
       action.payload

@@ -59,10 +59,26 @@ const AppProvider = ({ children }) => {
       loading()
       const resp = await fetch(`${url}${id}`)
       const data = await resp.json()
-      dispatch({ type: 'FECT_SINGLE_PRODUCT', payload: data })
+      const newData = {
+        ...data,
+        isInWishlist: false,
+        isInCart: false,
+        amount: 1,
+      }
+      dispatch({ type: 'FECT_SINGLE_PRODUCT', payload: newData })
     },
     [url]
   )
+
+  // Toggle isInWishlist
+  const toggleWishlist = () => {
+    dispatch({ type: 'TOGGLE_WISHLIST' })
+  }
+
+  // Toggle isInCart
+  const toggleCart = () => {
+    dispatch({ type: 'TOGGLE_CART' })
+  }
 
   return (
     <AppContext.Provider
@@ -73,6 +89,8 @@ const AppProvider = ({ children }) => {
         loading,
         getCategoryItems,
         fetchSingleProduct,
+        toggleWishlist,
+        toggleCart,
       }}
     >
       {children}
