@@ -7,9 +7,43 @@
   background: transparent;
   font-size: $fntS-4;
   cursor: pointer;
+  transition: $transition;
   font-family: 'Poppins', sans-serif;
 
   svg {
     color: $primary;
+  }
+}
+
+.btn-overview {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0;
+  padding: 0 !important;
+  gap: 1rem;
+  transition: $transition;
+
+  p,
+  svg {
+    color: #fff;
+    transition: $transition;
+  }
+
+  &:first-child {
+    background: $clr-red-1;
+  }
+
+  &:last-child {
+    background: $clr-dark-blue;
+  }
+
+  &:hover {
+    background: $secondary;
+    p,
+    svg {
+      color: $primary;
+    }
   }
 }

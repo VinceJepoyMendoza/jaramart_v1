@@ -21,7 +21,7 @@ const Navbar = () => {
       </Link>
       {isLoggedIn ? (
         <div className='navbar-links'>
-          <Link to='/likes' className='iconScale'>
+          <Link to='/wishlist' className='iconScale'>
             <FiHeart />
             <p className='badge'>4</p>
           </Link>

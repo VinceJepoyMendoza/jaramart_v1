@@ -10,7 +10,7 @@ import {
 import Home from './pages/Home'
 import Product from './pages/ProductOV'
 import Cart from './pages/Cart'
-import Likes from './pages/Likes'
+import WishList from './pages/WishList'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Error from './pages/Error'
@@ -28,7 +28,7 @@ const App = () => {
           <Route path='/' element={<Navigate to='/welcome' />} />
           <Route path='/welcome' element={<Home />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/likes' element={<Likes />} />
+          <Route path='/wishlist' element={<WishList />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/category/:cgryTitle' element={<SingleCategory />} />

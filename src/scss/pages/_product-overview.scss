@@ -1,0 +1,139 @@
+.product-overview {
+  z-index: -1;
+  &-content {
+    width: 85%;
+    padding: 4em 2em;
+    background: #fff;
+    border-radius: $radius;
+    display: flex;
+    gap: 4em;
+    margin: 0 auto;
+    @include border-sm;
+    @include shadow-sm;
+
+    &__item {
+      p {
+        margin: 1rem 0;
+      }
+
+      span.prodTitle {
+        color: $clr-grey-5;
+        font-weight: 400;
+        // font-size: $fntS-5;
+        margin-right: 2rem;
+      }
+
+      .price {
+        background: $primary;
+        color: #fff;
+        display: inline-block;
+        margin: 1.5rem 0 1.5rem 2rem;
+        padding: 1rem 2rem;
+        position: relative;
+        border-radius: 0 $radius $radius 0;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -2rem;
+          width: 25%;
+          height: 100%;
+          background: $primary;
+          border-radius: 50%;
+          z-index: 1;
+        }
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        svg {
+          color: $primary;
+        }
+      }
+    }
+
+    &__btn {
+      display: flex;
+    }
+
+    img {
+      width: 400px !important;
+    }
+  }
+}
+
+// Product discount message
+.product-overview__discount {
+  background: $primary;
+  padding: 0.5rem 0;
+  color: #fff;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: $xxxl) {
+  .product-overview {
+    &-content {
+      &__item {
+        h3.price {
+          margin: 0.5rem 0 0.5rem 2rem;
+        }
+        .lead {
+          font-size: $fntS-4;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $xl) {
+  .product-overview {
+    &-content {
+      img {
+        width: 300px !important;
+      }
+      &__item {
+        h3 {
+          font-size: $fntS-5;
+        }
+        .price:before {
+          left: -1.4rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $xl) {
+  .product-overview {
+    &-content {
+      flex-direction: column;
+      width: 100%;
+
+      img {
+        margin: 0 auto;
+        width: 250px !important;
+        height: 300px !important;
+      }
+      &__item {
+        h3 {
+          font-size: $fntS-4;
+        }
+        .lead {
+          font-size: $fntS-3;
+        }
+      }
+
+      &__btn {
+        flex-direction: column;
+        .btn-overview {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
