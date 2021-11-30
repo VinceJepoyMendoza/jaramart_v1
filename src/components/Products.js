@@ -16,7 +16,7 @@ const Products = () => {
         <Loading />
       ) : (
         <div className='products-content'>
-          {products.map((product) => {
+          {products?.map((product) => {
             const { id, image, title } = product
             return (
               <article className='product-card' key={`product ${id}`}>

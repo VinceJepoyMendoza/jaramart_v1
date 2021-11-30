@@ -9,7 +9,7 @@ const ProductOV = () => {
   const { prodId } = useParams()
   const { products, isLoading } = useGlobalContext()
 
-  return isLoading ? (
+  return isLoading || !products ? (
     <Loading />
   ) : (
     <>

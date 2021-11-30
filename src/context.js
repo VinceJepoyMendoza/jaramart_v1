@@ -17,29 +17,29 @@ const AppProvider = ({ children }) => {
   const url = `https://fakestoreapi.com/products/`
   const categoryUrl = `https://fakestoreapi.com/products/category/`
 
-  // Getting all the data from API
   const fetchData = useCallback(async () => {
-    const resp = await fetch(url)
-    const data = await resp.json()
-    const finalData = data.map((currProd) => {
-      return { ...currProd, isInWishlist: false, isInCart: false }
-    })
-    console.log('fetch')
-    dispatch({ type: 'GET_PRODUCTS', payload: finalData })
-    console.log('product set')
+    try {
+      const resp = await fetch(url)
+      const data = await resp.json()
+      const finalData = data.map((currProd) => {
+        return { ...currProd, isInWishlist: false, isInCart: false }
+      })
+      dispatch({ type: 'GET_PRODUCTS', payload: finalData })
+    } catch (error) {
+      console.log('fetching data from api error')
+    }
   }, [url])
 
+  // Getting all the data from API
   useEffect(() => {
-    console.log('loading')
     loading()
     fetchData()
   }, [fetchData])
 
   // useEffect(() => {
-  //   if (state.products) {
-  //     dispatch({ type: 'COLLECT_WISHLIST' })
-  //   }
-  // }, [state.products])
+  //   console.log('products changed')
+  //   dispatch({ type: 'COLLECT_WISHLIST', payload: state.products })
+  // }, [])
 
   // Getting category products from categoryProducts
   const getCategoryItems = useCallback(
