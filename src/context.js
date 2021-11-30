@@ -6,9 +6,10 @@ const AppContext = React.createContext()
 const initialState = {
   products: [],
   categoryProducts: [],
+  wishlist: [],
+  cart: [],
   isLoading: false,
-  isLoggedIn: false,
-  singleProduct: {},
+  isLoggedIn: true,
 }
 
 const AppProvider = ({ children }) => {
@@ -17,32 +18,30 @@ const AppProvider = ({ children }) => {
   const categoryUrl = `https://fakestoreapi.com/products/category/`
 
   // Getting all the data from API
-  useEffect(() => {
-    const fetchData = async () => {
-      loading()
-      const resp = await fetch(url)
-      const data = await resp.json()
-      dispatch({ type: 'GET_PRODUCTS', payload: data })
-    }
-    fetchData()
+  const fetchData = useCallback(async () => {
+    const resp = await fetch(url)
+    const data = await resp.json()
+    const finalData = data.map((currProd) => {
+      return { ...currProd, isInWishlist: false, isInCart: false }
+    })
+    console.log('fetch')
+    dispatch({ type: 'GET_PRODUCTS', payload: finalData })
+    console.log('product set')
   }, [url])
 
-  const loginAcc = (username, password, redirect, setMessage, setIsError) => {
-    dispatch({
-      type: 'LOGIN_ACC',
-      payload: { username, password, redirect, setMessage, setIsError },
-    })
-  }
+  useEffect(() => {
+    console.log('loading')
+    loading()
+    fetchData()
+  }, [fetchData])
 
-  const logoutAcc = () => {
-    dispatch({ type: 'LOGOUT_ACC' })
-  }
+  // useEffect(() => {
+  //   if (state.products) {
+  //     dispatch({ type: 'COLLECT_WISHLIST' })
+  //   }
+  // }, [state.products])
 
-  const loading = () => {
-    dispatch({ type: 'LOADING' })
-  }
-
-  // getting category products from categoryProducts
+  // Getting category products from categoryProducts
   const getCategoryItems = useCallback(
     async (cgryTitle) => {
       loading()
@@ -71,13 +70,29 @@ const AppProvider = ({ children }) => {
   )
 
   // Toggle isInWishlist
-  const toggleWishlist = () => {
-    dispatch({ type: 'TOGGLE_WISHLIST' })
+  const toggleWishlist = (id) => {
+    dispatch({ type: 'TOGGLE_WISHLIST', payload: id })
   }
 
   // Toggle isInCart
-  const toggleCart = () => {
-    dispatch({ type: 'TOGGLE_CART' })
+  const toggleCart = (id) => {
+    dispatch({ type: 'TOGGLE_CART', payload: id })
+  }
+
+  // User Authentication related
+  const loginAcc = (username, password, redirect, setMessage, setIsError) => {
+    dispatch({
+      type: 'LOGIN_ACC',
+      payload: { username, password, redirect, setMessage, setIsError },
+    })
+  }
+
+  const logoutAcc = () => {
+    dispatch({ type: 'LOGOUT_ACC' })
+  }
+
+  const loading = () => {
+    dispatch({ type: 'LOADING' })
   }
 
   return (

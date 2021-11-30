@@ -34,27 +34,37 @@ const Reducer = (state, action) => {
     }
   }
 
+  // Retrieving all products from wishlist
+  if (action.type === 'COLLECT_WISHLIST') {
+    console.log(`reducer wishlist`)
+  }
+
   if (action.type === 'TOGGLE_WISHLIST') {
     console.log('toggle wishtlist')
-    const newProd = {
-      ...state.singleProduct,
-      isInWishlist: !state.singleProduct.isInWishlist,
-    }
+    const newProd = state.products.map((currProd) => {
+      if (currProd.id === action.payload) {
+        return { ...currProd, isInWishlist: !currProd.isInWishlist }
+      }
+      return { ...currProd }
+    })
+
     return {
       ...state,
-      singleProduct: newProd,
+      products: newProd,
     }
   }
 
   if (action.type === 'TOGGLE_CART') {
     console.log('toggle cart')
-    const newProd = {
-      ...state.singleProduct,
-      isInCart: !state.singleProduct.isInCart,
-    }
+    const newProd = state.products.map((currProd) => {
+      if (currProd.id === action.payload) {
+        return { ...currProd, isInCart: !currProd.isInCart }
+      }
+      return { ...currProd }
+    })
     return {
       ...state,
-      singleProduct: newProd,
+      products: newProd,
     }
   }
 
