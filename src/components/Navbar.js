@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import { FiSearch, FiHeart } from 'react-icons/fi'
 import { BsCart3 } from 'react-icons/bs'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
-import { IoMdClose } from 'react-icons/io'
 import { useGlobalContext } from '../context'
 
 const Navbar = () => {
@@ -43,15 +42,7 @@ const Navbar = () => {
           </div>
         )}
       </nav>
-      <Modal open={isModalOpen} className='modal'>
-        <button type='button' className='btn btn-modal' onClick={closeModal}>
-          <IoMdClose />
-        </button>
-        <p>You must be logged in first to continue this action</p>
-        <small>
-          Don't have an account? <Link to='/register'>Create one</Link>
-        </small>
-      </Modal>
+      <Modal open={isModalOpen} />
     </>
   )
 }

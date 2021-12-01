@@ -1,11 +1,53 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
+import ReactDom from 'react-dom'
+import { IoMdClose } from 'react-icons/io'
+import { Link } from 'react-router-dom'
+import { useGlobalContext } from '../context'
 
-const Modal = ({ children, open }) => {
+const Modal = ({ open }) => {
+  const { closeModal, isModalOpen } = useGlobalContext()
+  const modalContainer = useRef(null)
+
+  useEffect(() => {
+    let handler = (event) => {
+      if (isModalOpen) {
+        if (!modalContainer.current.contains(event.target)) {
+          closeModal()
+        }
+      }
+    }
+
+    document.addEventListener('mousedown', handler)
+
+    return () => {
+      document.removeEventListener('mousedown', handler)
+    }
+  })
+
   if (!open) {
     return null
   }
 
-  return <div>{children}</div>
+  return ReactDom.createPortal(
+    <>
+      <div className='overlay'></div>
+      <div className='modal' ref={modalContainer}>
+        <button type='button' className='btn btn-modal' onClick={closeModal}>
+          <IoMdClose />
+        </button>
+        <p className='lead'>
+          You must be logged in first to continue this action
+        </p>
+        <Link to='/login' className='lead btn' onClick={closeModal}>
+          Login Account
+        </Link>
+        <small onClick={closeModal}>
+          Don't have an account? <Link to='/register'>Create one</Link>
+        </small>
+      </div>
+    </>,
+    document.getElementById('portal')
+  )
 }
 
 export default Modal

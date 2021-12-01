@@ -47,3 +47,10 @@
     }
   }
 }
+
+.btn-modal {
+  margin-left: calc(100% - 2rem);
+  svg {
+    font-size: $fntS-5;
+  }
+}
