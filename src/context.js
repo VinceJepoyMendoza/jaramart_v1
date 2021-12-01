@@ -9,7 +9,8 @@ const initialState = {
   wishlist: [],
   cart: [],
   isLoading: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
+  isModalOpen: false,
 }
 
 const AppProvider = ({ children }) => {
@@ -21,8 +22,8 @@ const AppProvider = ({ children }) => {
     try {
       const resp = await fetch(url)
       const data = await resp.json()
-      const finalData = data.map((currProd) => {
-        return { ...currProd, isInWishlist: false, isInCart: false }
+      const finalData = await data.map((currProd) => {
+        return { ...currProd, amount: 1, isInWishlist: false, isInCart: false }
       })
       dispatch({ type: 'GET_PRODUCTS', payload: finalData })
     } catch (error) {
@@ -36,10 +37,9 @@ const AppProvider = ({ children }) => {
     fetchData()
   }, [fetchData])
 
-  // useEffect(() => {
-  //   console.log('products changed')
-  //   dispatch({ type: 'COLLECT_WISHLIST', payload: state.products })
-  // }, [])
+  useEffect(() => {
+    dispatch({ type: 'COLLECT_INTEREST' })
+  }, [state.products])
 
   // Getting category products from categoryProducts
   const getCategoryItems = useCallback(
@@ -71,12 +71,24 @@ const AppProvider = ({ children }) => {
 
   // Toggle isInWishlist
   const toggleWishlist = (id) => {
-    dispatch({ type: 'TOGGLE_WISHLIST', payload: id })
+    if (state.isLoggedIn) {
+      dispatch({ type: 'TOGGLE_WISHLIST', payload: id })
+    } else {
+      dispatch({ type: 'LOG_FIRST' })
+    }
   }
 
   // Toggle isInCart
   const toggleCart = (id) => {
-    dispatch({ type: 'TOGGLE_CART', payload: id })
+    if (state.isLoggedIn) {
+      dispatch({ type: 'TOGGLE_CART', payload: id })
+    } else {
+      dispatch({ type: 'LOG_FIRST' })
+    }
+  }
+
+  const closeModal = () => {
+    dispatch({ type: 'CLOSE_MODAL' })
   }
 
   // User Authentication related
@@ -106,6 +118,7 @@ const AppProvider = ({ children }) => {
         fetchSingleProduct,
         toggleWishlist,
         toggleCart,
+        closeModal,
       }}
     >
       {children}

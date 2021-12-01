@@ -6,6 +6,7 @@
   padding: 1rem 1.5rem;
   align-items: center;
   background: $secondary;
+  z-index: 15;
 
   &-search {
     display: flex;

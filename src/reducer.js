@@ -25,18 +25,15 @@ const Reducer = (state, action) => {
     }
   }
 
-  // Fetch single product from api
-  if (action.type === 'FECT_SINGLE_PRODUCT') {
+  // Retrieving all products from wishlist
+  if (action.type === 'COLLECT_INTEREST') {
+    const wishes = state.products.filter((currProd) => currProd.isInWishlist)
+    const inCart = state.products.filter((currProd) => currProd.isInCart)
     return {
       ...state,
-      singleProduct: action.payload,
-      isLoading: false,
+      wishlist: wishes,
+      cart: inCart,
     }
-  }
-
-  // Retrieving all products from wishlist
-  if (action.type === 'COLLECT_WISHLIST') {
-    console.log(`reducer wishlist`)
   }
 
   if (action.type === 'TOGGLE_WISHLIST') {
@@ -96,6 +93,15 @@ const Reducer = (state, action) => {
     }
   }
 
+  // Open modal when toggling wishlist/cart if not logged in
+  if (action.type === 'LOG_FIRST') {
+    return { ...state, isModalOpen: true }
+  }
+
+  if (action.type === 'CLOSE_MODAL') {
+    return { ...state, isModalOpen: false }
+  }
+
   if (action.type === 'LOGOUT_ACC') {
     return {
       ...state,
@@ -109,6 +115,8 @@ const Reducer = (state, action) => {
       isLoading: true,
     }
   }
+
+  return { ...state }
 }
 
 export default Reducer
