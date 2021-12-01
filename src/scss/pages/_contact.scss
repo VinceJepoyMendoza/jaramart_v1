@@ -1,0 +1,75 @@
+// Contact
+
+.contact {
+  &-content {
+    display: flex;
+    border-radius: $radius-sm;
+    overflow: hidden;
+    @include shadow-sm;
+
+    aside {
+      flex: 1;
+      padding: 2rem;
+      color: #fff;
+      @include primary-gradient;
+
+      p {
+        margin: 1.5rem 0;
+      }
+
+      ul {
+        margin-top: 0.5rem;
+        li {
+          display: flex;
+          align-items: center;
+          gap: 1em;
+        }
+      }
+    }
+
+    form {
+      flex: 2;
+      width: 100%;
+      background: #fff;
+      padding: 2rem;
+
+      div {
+        margin-top: 1em;
+      }
+
+      & .formname {
+        display: flex;
+        gap: 1em;
+        input {
+          width: 100%;
+        }
+      }
+
+      input,
+      textarea {
+        border-radius: $radius-sm;
+        background: rgba($secondary, 0.9);
+        width: 100%;
+
+        &::placeholder {
+          text-transform: capitalize;
+          font-size: $fntS-4;
+        }
+
+        &:hover,
+        &:focus {
+          @include inputOutline;
+        }
+      }
+
+      textarea {
+        resize: none;
+        border: none;
+        padding: 10px;
+        font-family: 'Urbanist', sans-serif;
+        font-size: $fntS-5;
+        height: 250px;
+      }
+    }
+  }
+}

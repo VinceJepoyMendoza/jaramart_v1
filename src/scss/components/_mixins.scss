@@ -1,20 +1,5 @@
 // Mixins
 
-@mixin inputFocus {
-  transition: $transition;
-  border: $border-size transparent solid;
-
-  &:hover,
-  &:focus {
-    border: $border-size $primary solid;
-    color: $primary;
-
-    &::placeholder {
-      color: $primary;
-    }
-  }
-}
-
 // Position absolute center
 @mixin absolute-center {
   position: absolute;
@@ -45,10 +30,31 @@
   box-shadow: 13px 13px 15px 0 rgba(#000, 0.15);
 }
 
-// @mixin quote-left {
-//   text-shadow: 3px 3px 0 $clr-blue-6, 6px 6px 0 $clr-blue-7;
-// }
+@mixin primary-gradient {
+  background: linear-gradient(
+    to right,
+    rgba($clr-blue-2, 0.7),
+    rgba($clr-blue-4, 0.7)
+  );
+}
 
-@mixin textShadow-left {
-  text-shadow: -3px 3px 0 $clr-blue-6, -6px 6px 0 $clr-blue-7;
+// Inputs
+@mixin inputFocus {
+  transition: $transition;
+  border: $border-size transparent solid;
+
+  &:hover,
+  &:focus {
+    border: $border-size $primary solid;
+    color: $primary;
+
+    &::placeholder {
+      color: $primary;
+    }
+  }
+}
+
+// Custom input outline
+@mixin inputOutline {
+  outline: 1px solid $primary;
 }

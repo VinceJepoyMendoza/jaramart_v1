@@ -19,11 +19,6 @@ html {
     width: 1.4vw;
     transition: $transition;
 
-    &-thumb,
-    &-track {
-      transition: $transition;
-    }
-
     &-thumb {
       background: rgba($primary, 0.5);
       border: 2px solid $clr-grey-9;
@@ -93,11 +88,11 @@ h4 {
 
 input {
   font-family: 'Urbanist', sans-serif;
+  font-size: $fntS-5;
   border: none;
   padding: 10px;
-  outline: none;
+  // outline: none;
   border-radius: $radius;
-  font-size: $fntS-5;
 }
 
 @media screen and (min-width: $lg) {
