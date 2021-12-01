@@ -15,6 +15,7 @@
   }
 }
 
+// Position absolute center
 @mixin absolute-center {
   position: absolute;
   top: 50%;
@@ -22,16 +23,32 @@
   transform: translate(-50%, -50%);
 }
 
+// Borders
 @mixin border-sm {
   border: rgba(#000, 0.15) 1px solid;
 }
 @mixin border-md {
-  border: rgba($clr-grey-7, 0.15) 2px solid;
+  border: rgba(#000, 0.15) 2px solid;
 }
 @mixin border-lg {
-  border: rgba($clr-grey-7, 0.15) 3px solid;
+  border: rgba(#000, 0.15) 3px solid;
 }
 
+// Shadows
 @mixin shadow-sm {
   box-shadow: 5px 5px 10px 0 rgba(#000, 0.15);
+}
+@mixin shadow-md {
+  box-shadow: 8px 8px 12px 0 rgba(#000, 0.15);
+}
+@mixin shadow-lg {
+  box-shadow: 13px 13px 15px 0 rgba(#000, 0.15);
+}
+
+// @mixin quote-left {
+//   text-shadow: 3px 3px 0 $clr-blue-6, 6px 6px 0 $clr-blue-7;
+// }
+
+@mixin textShadow-left {
+  text-shadow: -3px 3px 0 $clr-blue-6, -6px 6px 0 $clr-blue-7;
 }

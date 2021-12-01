@@ -1,5 +1,10 @@
 // Dummy data
 
+import person1 from './img/testimonial/person-1.jpg'
+import person2 from './img/testimonial/person-2.jpg'
+import person3 from './img/testimonial/person-3.jpg'
+import person4 from './img/testimonial/person-4.jpg'
+
 const users = [
   {
     id: 1,
@@ -68,4 +73,46 @@ const categories = [
   },
 ]
 
-export { users, features, categories }
+const testimonial = [
+  {
+    id: 1,
+    name: 'Enricko Fernandez',
+    image: person1,
+    rating: 5,
+    job: 'shop owner',
+    testimony:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est possimus alias corrupti? Omnis adipisci, molestias dicta magnam sed similique hic ex quidem officiis porro voluptatem sit iusto ipsa quia ipsum.',
+  },
+  {
+    id: 2,
+    name: 'Rob Powell',
+    image: person3,
+    rating: 4,
+    job: 'student',
+
+    testimony:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est possimus alias corrupti? Omnis adipisci,sicing elit. Est possimus  Omnis molestias dicta magnam sed similique hic ex adipisci  quidem officiis porro voluptatem sit iusto ipsa quia alias corrupti? ipsum.',
+  },
+  {
+    id: 3,
+    name: 'Jessy Smith',
+    image: person2,
+    rating: 5,
+    job: 'house wife',
+
+    testimony:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Est possimus alias corrupti?  Omnis molestias dicta magnam sed similique Omnis adipisci, molestias ex quidem officiis porro voluptatem sit iusto ipsa quia ipsum.',
+  },
+  {
+    id: 4,
+    name: 'Chris Jones',
+    image: person4,
+    rating: 5,
+    job: 'office worker',
+
+    testimony:
+      'Lorem ipsum, consectetur adipisicing elit. Est possimus alias corrupti? Omnis adipisci, molestias dicta magnam sed similique hic ex quidem officiis porro voluptatem sit iusto ipsa quia ipsum.',
+  },
+]
+
+export { users, features, categories, testimonial }

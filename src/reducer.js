@@ -95,10 +95,13 @@ const Reducer = (state, action) => {
 
   // Open modal when toggling wishlist/cart if not logged in
   if (action.type === 'LOG_FIRST') {
+    // Disabling scroll
+    document.body.style.overflow = 'hidden'
     return { ...state, isModalOpen: true }
   }
 
   if (action.type === 'CLOSE_MODAL') {
+    document.body.style.overflow = ''
     return { ...state, isModalOpen: false }
   }
 

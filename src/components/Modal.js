@@ -8,11 +8,13 @@ const Modal = ({ open }) => {
   const { closeModal, isModalOpen } = useGlobalContext()
   const modalContainer = useRef(null)
 
+  // Closing modal if clicked outside
   useEffect(() => {
     let handler = (event) => {
       if (isModalOpen) {
         if (!modalContainer.current.contains(event.target)) {
           closeModal()
+          // Enable scrolling back
         }
       }
     }
@@ -28,6 +30,7 @@ const Modal = ({ open }) => {
     return null
   }
 
+  // Modal
   return ReactDom.createPortal(
     <>
       <div className='overlay'></div>

@@ -7,7 +7,7 @@ import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { useGlobalContext } from '../context'
 
 const Navbar = () => {
-  const { isLoggedIn, logoutAcc, wishlist, cart, isModalOpen, closeModal } =
+  const { isLoggedIn, logoutAcc, wishlist, cart, isModalOpen } =
     useGlobalContext()
 
   return (
@@ -48,3 +48,9 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+// Disclaimer
+
+// <a href="https://generated.photos/">Photo by Generated Photos</a> - icons8
+
+// pexels

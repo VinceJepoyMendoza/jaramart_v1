@@ -1,0 +1,72 @@
+// Testimonial
+
+.testimonial {
+  &-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1em;
+    position: relative;
+
+    &__item {
+      position: relative;
+      border-radius: $radius-sm;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include border-sm;
+      @include shadow-md;
+
+      svg {
+        color: $primary;
+        font-size: $fntS-5;
+      }
+
+      div {
+        padding: 2rem;
+        font-size: $fntS-4;
+        position: relative;
+
+        .left,
+        .right {
+          position: absolute;
+          font-size: $fntS-6;
+        }
+
+        .left {
+          top: -10px;
+          left: -10px;
+        }
+
+        .right {
+          bottom: 5px;
+          right: -10px;
+        }
+      }
+
+      footer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: $primary;
+        border-radius: 0 0 $radius $radius;
+        color: #fff;
+        padding: 1rem 2rem;
+        text-transform: capitalize;
+
+        img {
+          width: 25%;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .testimonial {
+    &-content__item:last-child {
+      display: none;
+    }
+  }
+}
