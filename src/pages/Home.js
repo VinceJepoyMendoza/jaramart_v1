@@ -6,7 +6,6 @@ import About from '../components/About'
 import Products from '../components/Products'
 import Testimonials from '../components/Testimonials'
 import Contact from '../components/Contact'
-import Footer from '../components/Footer'
 import Category from '../components/Category'
 
 const Home = () => {
@@ -18,7 +17,6 @@ const Home = () => {
       <Products />
       <Testimonials />
       <Contact />
-      <Footer />
     </>
   )
 }

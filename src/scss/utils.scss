@@ -109,7 +109,7 @@ input {
   }
 
   h4 {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   h1,
@@ -181,10 +181,6 @@ section {
 }
 
 @media screen and (max-width: $xl) {
-  // section {
-  //   padding: 2.5rem 0.75rem;
-  // }
-
   .logo {
     font-size: $fntS-5;
   }

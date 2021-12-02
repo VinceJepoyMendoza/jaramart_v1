@@ -5,6 +5,7 @@ const AppContext = React.createContext()
 
 const initialState = {
   products: [],
+  categories: [],
   categoryProducts: [],
   wishlist: [],
   cart: [],
@@ -16,9 +17,11 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const url = `https://fakestoreapi.com/products/`
+  const categoriesUrl = `https://fakestoreapi.com/products/categories`
   const categoryUrl = `https://fakestoreapi.com/products/category/`
 
   const fetchData = useCallback(async () => {
+    // fetching all products from api
     try {
       const resp = await fetch(url)
       const data = await resp.json()
@@ -29,7 +32,16 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       console.log('fetching data from api error')
     }
-  }, [url])
+
+    // Fetching all categories from api
+    try {
+      const resp = await fetch(categoriesUrl)
+      const data = await resp.json()
+      dispatch({ type: 'GET_CATEGORIES', payload: data })
+    } catch (error) {
+      console.log('fetching data from api error')
+    }
+  }, [url, categoriesUrl])
 
   // Getting all the data from API
   useEffect(() => {

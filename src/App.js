@@ -18,6 +18,7 @@ import SingleCategory from './pages/SingleCategory'
 
 // Import navbar
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
           <Route path='/product/:prodId' element={<Product />} />
           <Route path='*' element={<Error />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   )

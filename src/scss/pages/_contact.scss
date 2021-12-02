@@ -29,7 +29,6 @@
 
     form {
       flex: 2;
-      width: 100%;
       background: #fff;
       padding: 2rem;
 
@@ -69,6 +68,31 @@
         font-family: 'Urbanist', sans-serif;
         font-size: $fntS-5;
         height: 250px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .contact-content {
+    flex-direction: column;
+    aside {
+      order: 2;
+    }
+    form {
+      order: 1;
+    }
+  }
+}
+
+@media screen and (max-width: $md) {
+  .contact-content {
+    form {
+      .formname {
+        flex-direction: column;
+      }
+      textarea {
+        font-size: $fntS-4;
       }
     }
   }

@@ -16,6 +16,14 @@ const Reducer = (state, action) => {
     }
   }
 
+  // Get all categories from api
+  if (action.type === 'GET_CATEGORIES') {
+    return {
+      ...state,
+      categories: action.payload,
+    }
+  }
+
   // Get all products from certain category
   if (action.type === 'GET_CATEGORY_ITEMS') {
     return {
