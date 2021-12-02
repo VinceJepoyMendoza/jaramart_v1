@@ -10,6 +10,43 @@ const Footer = () => {
 
   return (
     <footer className='main-footer'>
+      <div className='footer-content'>
+        <div>
+          <h3>store locator</h3>
+          <small>find a vans store near you</small>
+          <Link to='/dummypage' className='btn btn-footer'>
+            find a store
+          </Link>
+        </div>
+        <div>
+          <h3>Follow jaramart</h3>
+          <div className='footer-icons'>
+            <Link to='/dummypage' target='_blank'>
+              <FaFacebookF />
+            </Link>
+            <Link to='/dummypage' target='_blank'>
+              <RiInstagramFill />
+            </Link>
+            <Link to='/dummypage' target='_blank'>
+              <FaTwitter />
+            </Link>
+            <Link to='/dummypage' target='_blank'>
+              <FaYoutube />
+            </Link>
+            <Link to='/dummypage' target='_blank'>
+              <RiLinkedinFill />
+            </Link>
+            <Link to='/dummypage' target='_blank'>
+              <FaGithub />
+            </Link>
+          </div>
+        </div>
+        <form>
+          <h3>Subscribe</h3>
+          <small>Receive product news and updates in your inbox</small>
+          <input type='email' placeholder='Email address' />
+        </form>
+      </div>
       <ul>
         <li>
           <h3>Shop by category</h3>
@@ -69,43 +106,6 @@ const Footer = () => {
           </div>
         </li>
       </ul>
-      <div className='footer-content'>
-        <div>
-          <h3>store locator</h3>
-          <small>find a vans store near you</small>
-          <Link to='/dummypage' className='btn btn-footer'>
-            find a store
-          </Link>
-        </div>
-        <div>
-          <h3>Follow jaramart</h3>
-          <div className='footer-icons'>
-            <Link to='/dummypage' target='_blank'>
-              <FaFacebookF />
-            </Link>
-            <Link to='/dummypage' target='_blank'>
-              <RiInstagramFill />
-            </Link>
-            <Link to='/dummypage' target='_blank'>
-              <FaTwitter />
-            </Link>
-            <Link to='/dummypage' target='_blank'>
-              <FaYoutube />
-            </Link>
-            <Link to='/dummypage' target='_blank'>
-              <RiLinkedinFill />
-            </Link>
-            <Link to='/dummypage' target='_blank'>
-              <FaGithub />
-            </Link>
-          </div>
-        </div>
-        <form>
-          <h3>Subscribe</h3>
-          <small>Receive product news and updates in your inbox</small>
-          <input type='email' placeholder='Email address' />
-        </form>
-      </div>
       <footer>
         <Link to='/welcome' className='logo'>
           Jaramart

@@ -55,6 +55,23 @@
   }
 }
 
+@mixin invertInputFocus {
+  transition: $transition;
+  border: $border-size transparent solid;
+
+  &:hover,
+  &:focus {
+    border: $border-size #fff solid;
+    color: #fff;
+    outline: none;
+    background: transparent;
+
+    // &::placeholder {
+    //   color: $primary;
+    // }
+  }
+}
+
 // Custom input outline
 @mixin inputOutline {
   outline: 1px solid $primary;

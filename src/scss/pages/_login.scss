@@ -1,67 +1,101 @@
 // Login page
 
 .login {
-  background: url('https://images.pexels.com/photos/331990/pexels-photo-331990.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260')
-    no-repeat center center/cover;
-  // width: 100%;
-  // height: 100vh;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
-  // z-index: -1;
+  background: $clr-grey-9;
+  height: 100%;
 
-  &-form {
-    background: rgba($secondary, 0.8);
-    width: 40%;
-    padding: 3rem 4rem 0.25rem 4rem;
+  &-content {
+    display: flex;
+    justify-content: space-evenly;
     border-radius: $radius;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    overflow: hidden;
+    width: 75%;
+    margin: 0 auto;
+    background: $clr-grey-8;
+    @include shadow-sm;
+    @include border-sm;
 
-    div {
-      margin-bottom: 2rem;
+    form {
+      width: 50%;
+      padding: 2rem 4rem;
+      color: #fff;
+      border-radius: $radius;
+      @include primary-gradient;
 
-      input {
-        padding: 0.75rem 1rem;
-        width: 100%;
-        @include inputFocus;
+      h3 {
+        margin-bottom: 1.25rem;
       }
 
-      input[type='password'] {
-        font-weight: 900;
-        &::placeholder {
-          font-weight: 400;
+      & > div {
+        position: relative;
+        margin-bottom: 2rem;
+
+        label {
+          display: block;
+          text-align: left;
         }
-      }
 
-      &:last-child {
-        margin-top: 2rem;
-        text-align: center;
+        input {
+          width: 100%;
+          padding-left: 2.2rem;
+          @include invertInputFocus;
+        }
+
+        svg {
+          position: absolute;
+          top: 55%;
+          left: 12px;
+          color: #000;
+          transition: $transition;
+        }
+
+        &:hover,
+        &:focus {
+          svg {
+            color: #fff;
+          }
+        }
       }
 
       button {
         background: $primary;
-        color: #fff;
         width: 100%;
+        margin-bottom: 2rem;
+      }
+
+      small {
+        text-align: center;
+        display: block;
       }
     }
-  }
-}
 
-@media screen and (max-width: $xl) {
-  .login {
-    &-form {
+    & > div {
+      background: $clr-grey-8;
+
       width: 50%;
+      padding: 2rem;
     }
   }
 }
 
-@media screen and (max-width: $md) {
+@media screen and (max-width: $lg) {
   .login {
-    &-form {
-      width: 80%;
+    &-content {
+      width: 95%;
+      flex-direction: column;
+
+      form {
+        padding: 1.5rem;
+        width: 100%;
+      }
+
+      & > div {
+        width: 100%;
+        text-align: center;
+        img {
+          width: 80%;
+        }
+      }
     }
   }
 }

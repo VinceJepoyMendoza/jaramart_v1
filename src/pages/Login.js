@@ -1,17 +1,19 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
+import { BiUser } from 'react-icons/bi'
+import { HiOutlineKey } from 'react-icons/hi'
+import LoginImg from '../img/loginimg.svg'
 
 const Login = () => {
   const { loginAcc } = useGlobalContext()
-  const [message, setMessage] = useState('message')
-  const [isError, setIsError] = useState(false)
 
   const submitHandler = (e) => {
     e.preventDefault()
     const userValue = userInput.current.value
     const passValue = passInput.current.value
-    loginAcc(userValue, passValue, redirect, setMessage, setIsError)
+    loginAcc(userValue, passValue, redirect)
   }
 
   const userInput = useRef(null)
@@ -22,37 +24,37 @@ const Login = () => {
     navigate('/welcome')
   }
 
+  useEffect(() => {
+    // Preventing page to load on bottom every redirects
+    window.scrollTo({ top: 0 })
+  }, [])
+
   return (
     <section className='login'>
-      <form className='login-form' onSubmit={submitHandler}>
-        {isError && <div className='login-message'>{message}</div>}
-        <div>
-          <input
-            type='text'
-            ref={userInput}
-            id='AccUser'
-            placeholder='Username'
-          />
-        </div>
-        <div>
-          <input
-            type='password'
-            ref={passInput}
-            id='AccPassword'
-            placeholder='Password'
-          />
-        </div>
-        <div>
-          <button type='submit' className='btn'>
+      <div className='login-content'>
+        <form onSubmit={submitHandler}>
+          <h3>Log in your account</h3>
+          <div>
+            <label>Enter username</label>
+            <input type='text' ref={userInput} />
+            <BiUser className='input-svg' />
+          </div>
+          <div>
+            <label>Enter password</label>
+            <input type='password' ref={passInput} />
+            <HiOutlineKey className='input-svg' />
+          </div>
+          <button type='submit' className='btn btn-login'>
             Login
           </button>
-        </div>
-        <div>
           <small>
-            Don't have an Account yet? <a href='/register'>Register</a>
+            Don't have an account yet? <Link to='/register'>Create one</Link>
           </small>
+        </form>
+        <div>
+          <img src={LoginImg} alt='Login' />
         </div>
-      </form>
+      </div>
     </section>
   )
 }
