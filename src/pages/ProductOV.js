@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
 import { useGlobalContext } from '../context'
 import { BsStarFill, BsCart3 } from 'react-icons/bs'
@@ -8,6 +8,10 @@ import Loading from '../components/Loading'
 const ProductOV = () => {
   const { prodId } = useParams()
   const { products, isLoading } = useGlobalContext()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+  }, [])
 
   return isLoading || !products ? (
     <Loading />

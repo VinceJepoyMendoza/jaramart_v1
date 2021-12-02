@@ -9,6 +9,7 @@ const SingleCategory = () => {
   const { categoryProducts, isLoading, getCategoryItems } = useGlobalContext()
 
   useEffect(() => {
+    window.scrollTo({ top: 0 })
     getCategoryItems(cgryTitle)
   }, [getCategoryItems, cgryTitle])
 
