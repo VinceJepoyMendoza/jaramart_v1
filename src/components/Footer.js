@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import { FaFacebookF, FaTwitter, FaYoutube, FaGithub } from 'react-icons/fa'
 import { RiInstagramFill, RiLinkedinFill } from 'react-icons/ri'
+import { HiOutlineShoppingBag } from 'react-icons/hi'
+
 const Footer = () => {
   const { categories } = useGlobalContext()
 
   return (
-    <footer>
+    <footer className='main-footer'>
       <ul>
         <li>
-          <h3>Shop</h3>
-          <p>By Category</p>
+          <h3>Shop by category</h3>
           {categories.map((category, index) => {
             return (
               <Link to='/dummypage' key={index}>
@@ -48,12 +49,12 @@ const Footer = () => {
         <li>
           <h3>Contact</h3>
           <div>
-            <h4>Email</h4>
+            <p className='lead'>Email</p>
             <Link to='/dummypage'>contact us</Link>
           </div>
           <div>
-            <h4>Telephone</h4>
-            <p>+63 999 9999 999</p>
+            <p className='lead'>Telephone</p>
+            <p className='fp'>+63 999 9999 999</p>
           </div>
           <div>
             <h4>Address</h4>
@@ -64,7 +65,7 @@ const Footer = () => {
           </div>
           <div>
             <h4>Physical Store hours</h4>
-            <p>M - F 6:am - 8:00pm PST</p>
+            <p className='fp'>M - F 6:am - 8:00pm PST</p>
           </div>
         </li>
       </ul>
@@ -78,7 +79,7 @@ const Footer = () => {
         </div>
         <div>
           <h3>Follow jaramart</h3>
-          <div>
+          <div className='footer-icons'>
             <Link to='/dummypage' target='_blank'>
               <FaFacebookF />
             </Link>
@@ -105,6 +106,23 @@ const Footer = () => {
           <input type='email' placeholder='Email address' />
         </form>
       </div>
+      <footer>
+        <Link to='/welcome' className='logo'>
+          Jaramart
+          <HiOutlineShoppingBag />
+        </Link>
+        <small>
+          &copy; Copyright {new Date().getFullYear()} Multi-purpose company |
+          created by{' '}
+          <a
+            href='https://github.com/VinceJepoyMendoza'
+            target='_blank'
+            rel='noreferrer'
+          >
+            Vince Jepoy Mendoza
+          </a>
+        </small>
+      </footer>
     </footer>
   )
 }

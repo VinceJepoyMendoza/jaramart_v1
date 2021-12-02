@@ -47,6 +47,7 @@
   &:focus {
     border: $border-size $primary solid;
     color: $primary;
+    outline: none;
 
     &::placeholder {
       color: $primary;

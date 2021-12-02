@@ -1,0 +1,163 @@
+// Footer
+
+footer {
+  color: #fff;
+  text-transform: capitalize;
+
+  h3,
+  .lead {
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+  }
+
+  ul {
+    background: $clr-blue-3;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem 2rem;
+
+    li {
+      a {
+        color: #fff;
+        text-decoration: underline;
+        display: block;
+        font-size: $fntS-3;
+        color: #f4f4f4;
+      }
+
+      p,
+      address {
+        font-size: $fntS-3;
+      }
+    }
+
+    a,
+    address,
+    h4,
+    .fp {
+      margin-left: 15px;
+    }
+  }
+
+  & > div {
+    background: $clr-blue-2;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
+
+    small {
+      color: #f4f4f4;
+      margin-left: 15px;
+    }
+
+    .footer-icons {
+      flex-direction: row;
+      gap: 1rem;
+      margin-top: 0.2rem;
+      svg {
+        color: #fff;
+        font-size: $fntS-5;
+        transition: $transition;
+
+        &:hover {
+          color: turquoise;
+        }
+      }
+    }
+
+    form {
+      input {
+        display: block;
+        margin: 0.5rem 0;
+        margin-left: 15px;
+        @include inputFocus;
+      }
+    }
+  }
+
+  footer {
+    background: $clr-blue-1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 2rem 2rem 1.5rem;
+    text-align: center;
+
+    .logo,
+    svg {
+      color: #fff;
+    }
+
+    small {
+      margin-top: 1rem;
+
+      a {
+        color: #f4f4f4;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  footer {
+    h3 {
+      margin-bottom: 1rem;
+      font-size: $fntS-5;
+    }
+
+    ul {
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      padding: 2rem;
+
+      li {
+        a,
+        address,
+        p {
+          margin-bottom: 0.5rem;
+        }
+        a,
+        address,
+        h4,
+        .fp {
+          margin-left: 0;
+        }
+      }
+    }
+
+    & > div {
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 2rem;
+
+      small {
+        margin-left: 0;
+      }
+
+      form input {
+        margin-left: 0;
+      }
+    }
+
+    footer {
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 1rem;
+
+      .logo {
+        font-size: $fntS-4;
+      }
+
+      small {
+        margin-top: 0;
+      }
+    }
+  }
+}

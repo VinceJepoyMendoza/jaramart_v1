@@ -54,3 +54,20 @@
     font-size: $fntS-5;
   }
 }
+
+.btn-footer {
+  display: inline-block;
+  width: 200px;
+  background: #fff;
+  text-align: center;
+  margin: 0.5rem 0;
+  margin-left: 15px;
+  border: $border-size solid transparent;
+
+  &:hover {
+    border: $border-size solid #fff;
+    background: $clr-blue-3;
+    color: #fff;
+    transform: scale(1.1);
+  }
+}
