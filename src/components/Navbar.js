@@ -23,7 +23,7 @@ const Navbar = () => {
         </Link>
         {isLoggedIn ? (
           <div className='navbar-links'>
-            <Link to='/wishlist' className='iconScale'>
+            <Link to='/wishlist' className='iconScale' replace>
               <FiHeart />
               <p className='badge'>{wishlist.length}</p>
             </Link>
@@ -31,7 +31,7 @@ const Navbar = () => {
               <BsCart3 />
               <p className='badge'>{cart.length}</p>
             </Link>
-            <Link to='/welcome' onClick={logoutAcc}>
+            <Link to='/welcome' onClick={logoutAcc} replace>
               Log out
             </Link>
           </div>

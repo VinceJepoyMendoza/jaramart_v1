@@ -4,10 +4,10 @@ import { useGlobalContext } from '../context'
 import ProductsBtn from '../components/ProductsBtn'
 
 const Products = () => {
-  const { products, isLoading } = useGlobalContext()
+  const { products, isLoading, productsOffsetY } = useGlobalContext()
 
   return (
-    <section className='products'>
+    <section className='products' ref={productsOffsetY}>
       <div className='section-header'>
         <h4>Products</h4>
         <h3>World class products around the world</h3>

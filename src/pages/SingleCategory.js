@@ -18,7 +18,6 @@ const SingleCategory = () => {
   ) : (
     <section className='cgry-products'>
       {products.map((product) => {
-        // console.log(product.category)
         if (product.category === cgryTitle) {
           const { id, title, image } = product
           return (

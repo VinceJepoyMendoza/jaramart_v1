@@ -1,0 +1,21 @@
+// wishlist and empty wishlist/cart
+
+.emptySelected {
+  background: $clr-grey-8;
+  width: 85%;
+  margin: 3rem auto;
+  text-align: center;
+  border-radius: $radius;
+  text-transform: capitalize;
+  @include shadow-sm;
+  @include border-sm;
+
+  img {
+    width: 50%;
+    margin-top: 1rem;
+  }
+
+  h3 {
+    color: #fff;
+  }
+}

@@ -73,6 +73,14 @@ const Reducer = (state, action) => {
     }
   }
 
+  // Setting products offset Y
+  // if (action.type === 'LOCATE_PRODUCTS') {
+  //   return {
+  //     ...state,
+  //     productsY: action.payload,
+  //   }
+  // }
+
   // Authentication related section
   if (action.type === 'LOGIN_ACC') {
     const { name, password: passDb } = users[0]

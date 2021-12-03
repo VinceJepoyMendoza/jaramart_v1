@@ -1,4 +1,10 @@
-import React, { useContext, useReducer, useEffect, useCallback } from 'react'
+import React, {
+  useContext,
+  useReducer,
+  useEffect,
+  useCallback,
+  // useRef,
+} from 'react'
 import reducer from './reducer'
 
 const AppContext = React.createContext()
@@ -12,12 +18,14 @@ const initialState = {
   isLoading: false,
   isLoggedIn: true,
   loginAlert: { show: false, msg: '' },
+  // productsY: 0,
 }
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const url = `https://fakestoreapi.com/products/`
   const categoriesUrl = `https://fakestoreapi.com/products/categories`
+  // const productsOffsetY = useRef(null)
 
   const fetchData = useCallback(async () => {
     // fetching all products from api
@@ -44,6 +52,8 @@ const AppProvider = ({ children }) => {
 
   // Getting all the data from API
   useEffect(() => {
+    // Force refreshing to top
+    window.scrollTo({ top: 0 })
     loading()
     fetchData()
   }, [fetchData])
@@ -52,16 +62,14 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'COLLECT_INTEREST' })
   }, [state.products])
 
-  // Getting category products from categoryProducts
-  // const getCategoryItems = useCallback(
-  //   async (cgryTitle) => {
-  //     loading()
-  //     const resp = await fetch(`${categoryUrl}${cgryTitle}`)
-  //     const data = await resp.json()
-  //     dispatch({ type: 'GET_CATEGORY_ITEMS', payload: data })
-  //   },
-  //   [categoryUrl]
-  // )
+  // useEffect(() => {
+  //   const prodOffset = productsOffsetY.current.offsetTop
+  //   // Get products Y location
+  //   dispatch({
+  //     type: 'LOCATE_PRODUCTS',
+  //     payload: prodOffset,
+  //   })
+  // }, [productsOffsetY])
 
   const getCategoryItems = useCallback((cgryTitle) => {
     dispatch({ type: 'GET_CATEGORY_ITEMS', payload: cgryTitle })
@@ -102,6 +110,15 @@ const AppProvider = ({ children }) => {
     }
   }
 
+  // const scrollToProducts = () => {
+  //   window.scrollTo({
+  //     top: state.productsY,
+  //     left: 0,
+  //     behavior: 'smooth',
+  //   })
+  // }
+
+  // Close modal
   const closeModal = () => {
     dispatch({ type: 'CLOSE_MODAL' })
   }
@@ -142,6 +159,8 @@ const AppProvider = ({ children }) => {
         toggleCart,
         closeModal,
         loginErr,
+        // scrollToProducts,
+        // productsOffsetY,
       }}
     >
       {children}
