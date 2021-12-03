@@ -23,9 +23,12 @@ const Reducer = (state, action) => {
 
   // Get all products from certain category
   if (action.type === 'GET_CATEGORY_ITEMS') {
+    const newData = state.products.filter(
+      (item) => item.category === action.payload
+    )
     return {
       ...state,
-      categoryProducts: action.payload,
+      categoryProducts: newData,
       isLoading: false,
     }
   }

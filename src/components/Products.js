@@ -20,9 +20,8 @@ const Products = () => {
             const { id, image, title } = product
             return (
               <article className='product-card' key={`product ${id}`}>
-                <h4>{title}</h4>
                 <img src={image} alt={title} />
-                <ProductsBtn id={id} />
+                <ProductsBtn {...product} />
               </article>
             )
           })}

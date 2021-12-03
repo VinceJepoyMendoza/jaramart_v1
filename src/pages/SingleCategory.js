@@ -6,26 +6,29 @@ import ProductsBtn from '../components/ProductsBtn'
 
 const SingleCategory = () => {
   const { cgryTitle } = useParams()
-  const { categoryProducts, isLoading, getCategoryItems } = useGlobalContext()
+  const { products, isLoading, fetchData } = useGlobalContext()
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
-    getCategoryItems(cgryTitle)
-  }, [getCategoryItems, cgryTitle])
+    fetchData()
+  }, [fetchData])
 
   return isLoading ? (
     <Loading />
   ) : (
     <section className='cgry-products'>
-      {categoryProducts.map((product) => {
-        const { id, title, image } = product
-        return (
-          <article className='product-card' key={`category product ${id}`}>
-            <h4>{title}</h4>
-            <img src={image} alt={title} />
-            <ProductsBtn id={id} />
-          </article>
-        )
+      {products.map((product) => {
+        // console.log(product.category)
+        if (product.category === cgryTitle) {
+          const { id, title, image } = product
+          return (
+            <article className='product-card' key={`category product ${id}`}>
+              <img src={image} alt={title} />
+              <ProductsBtn {...product} />
+            </article>
+          )
+        }
+        return ''
       })}
     </section>
   )

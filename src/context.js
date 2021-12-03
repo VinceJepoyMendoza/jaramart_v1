@@ -6,12 +6,11 @@ const AppContext = React.createContext()
 const initialState = {
   products: [],
   categories: [],
-  categoryProducts: [],
   wishlist: [],
   cart: [],
   isModalOpen: false,
   isLoading: false,
-  isLoggedIn: false,
+  isLoggedIn: true,
   loginAlert: { show: false, msg: '' },
 }
 
@@ -19,7 +18,6 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const url = `https://fakestoreapi.com/products/`
   const categoriesUrl = `https://fakestoreapi.com/products/categories`
-  const categoryUrl = `https://fakestoreapi.com/products/category/`
 
   const fetchData = useCallback(async () => {
     // fetching all products from api
@@ -55,15 +53,19 @@ const AppProvider = ({ children }) => {
   }, [state.products])
 
   // Getting category products from categoryProducts
-  const getCategoryItems = useCallback(
-    async (cgryTitle) => {
-      loading()
-      const resp = await fetch(`${categoryUrl}${cgryTitle}`)
-      const data = await resp.json()
-      dispatch({ type: 'GET_CATEGORY_ITEMS', payload: data })
-    },
-    [categoryUrl]
-  )
+  // const getCategoryItems = useCallback(
+  //   async (cgryTitle) => {
+  //     loading()
+  //     const resp = await fetch(`${categoryUrl}${cgryTitle}`)
+  //     const data = await resp.json()
+  //     dispatch({ type: 'GET_CATEGORY_ITEMS', payload: data })
+  //   },
+  //   [categoryUrl]
+  // )
+
+  const getCategoryItems = useCallback((cgryTitle) => {
+    dispatch({ type: 'GET_CATEGORY_ITEMS', payload: cgryTitle })
+  }, [])
 
   // Getting single products from api
   const fetchSingleProduct = useCallback(
@@ -130,6 +132,7 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         ...state,
+        fetchData,
         loginAcc,
         logoutAcc,
         loading,
