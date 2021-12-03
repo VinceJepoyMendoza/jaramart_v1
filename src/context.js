@@ -58,6 +58,7 @@ const AppProvider = ({ children }) => {
     fetchData()
   }, [fetchData])
 
+  // Collect wishlist and cart
   useEffect(() => {
     dispatch({ type: 'COLLECT_INTEREST' })
   }, [state.products])

@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom'
+import ScrollToTopBtn from './components/ScrollToTopBtn'
 
 // Import pages
 import Home from './pages/Home'
@@ -37,6 +38,7 @@ const App = () => {
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />
+        <ScrollToTopBtn />
       </Router>
     </main>
   )
