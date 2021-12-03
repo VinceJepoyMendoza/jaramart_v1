@@ -1,28 +1,24 @@
 import React, { useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 import { BiUser } from 'react-icons/bi'
 import { HiOutlineKey } from 'react-icons/hi'
 import LoginImg from '../img/loginimg.svg'
+import LoginAlert from '../components/LoginAlert'
 
 const Login = () => {
-  const { loginAcc } = useGlobalContext()
+  const { loginAcc, loginAlert, loginErr } = useGlobalContext()
 
   const submitHandler = (e) => {
     e.preventDefault()
     const userValue = userInput.current.value
     const passValue = passInput.current.value
-    loginAcc(userValue, passValue, redirect)
+    loginAcc(userValue, passValue, navigate)
   }
 
   const userInput = useRef(null)
   const passInput = useRef(null)
   const navigate = useNavigate()
-
-  const redirect = () => {
-    navigate('/welcome')
-  }
 
   useEffect(() => {
     // Preventing page to load on bottom every redirects
@@ -34,6 +30,9 @@ const Login = () => {
       <div className='login-content'>
         <form onSubmit={submitHandler}>
           <h3>Log in your account</h3>
+          {loginAlert.show && (
+            <LoginAlert {...loginAlert} removeAlert={loginErr} />
+          )}
           <div>
             <label>Enter username</label>
             <input type='text' ref={userInput} />

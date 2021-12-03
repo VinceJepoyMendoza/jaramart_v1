@@ -22,7 +22,7 @@ import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <div>
+    <main>
       <Router>
         <Navbar />
         <Routes>
@@ -38,7 +38,7 @@ const App = () => {
         </Routes>
         <Footer />
       </Router>
-    </div>
+    </main>
   )
 }
 

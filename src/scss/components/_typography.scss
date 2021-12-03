@@ -31,3 +31,12 @@
     font-size: $fntS-4;
   }
 }
+
+.login-content-error {
+  color: $clr-red-1;
+  margin: 0.2rem 0;
+  padding: 5px;
+  background: #f4f4f4;
+  text-align: left !important;
+  border-radius: $radius-sm;
+}

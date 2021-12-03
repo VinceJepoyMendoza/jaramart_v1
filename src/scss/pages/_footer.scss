@@ -11,7 +11,7 @@ footer {
   }
 
   ul {
-    background: $clr-blue-3;
+    background: $clr-blue-2;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
@@ -41,7 +41,7 @@ footer {
   }
 
   & > div {
-    background: $clr-blue-2;
+    background: $clr-blue-3;
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;

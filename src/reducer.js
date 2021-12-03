@@ -4,9 +4,6 @@
 import { users } from './data'
 
 const Reducer = (state, action) => {
-  const { name, password: passDb } = users[0]
-  let logStatus = false
-
   // Get all products
   if (action.type === 'GET_PRODUCTS') {
     return {
@@ -75,29 +72,31 @@ const Reducer = (state, action) => {
 
   // Authentication related section
   if (action.type === 'LOGIN_ACC') {
-    const { username, password, redirect, setMessage, setIsError } =
-      action.payload
+    const { name, password: passDb } = users[0]
+    const { username, password, navigate, loginErr } = action.payload
     // Validating submit credentials
     if (!username || !password) {
-      logStatus = false
-      setMessage('please fill up username and password')
-      setIsError(true)
+      console.log('incomplete')
+      loginErr(true, 'Please fill up the following')
     } else if (username === name && password === passDb) {
       // Redirect to home page (Logged in)
-      redirect()
-      setMessage('welcome')
-      setIsError(false)
-      logStatus = true
-      console.log(`login success`)
+      navigate(-1)
+      return {
+        ...state,
+        isLoggedIn: true,
+      }
     } else {
-      logStatus = false
-      setMessage("username and password didn't match")
-      setIsError(true)
+      console.log('not match')
+      loginErr(true, 'Username and Password does not match')
     }
+  }
 
+  if (action.type === 'LOGIN_ERR') {
+    const { show, msg } = action.payload
     return {
       ...state,
-      isLoggedIn: logStatus,
+      isLoggedIn: false,
+      loginAlert: { show, msg },
     }
   }
 

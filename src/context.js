@@ -9,9 +9,10 @@ const initialState = {
   categoryProducts: [],
   wishlist: [],
   cart: [],
+  isModalOpen: false,
   isLoading: false,
   isLoggedIn: false,
-  isModalOpen: false,
+  loginAlert: { show: false, msg: '' },
 }
 
 const AppProvider = ({ children }) => {
@@ -104,11 +105,17 @@ const AppProvider = ({ children }) => {
   }
 
   // User Authentication related
-  const loginAcc = (username, password, redirect, setMessage, setIsError) => {
+  const loginAcc = (username, password, navigate) => {
     dispatch({
       type: 'LOGIN_ACC',
-      payload: { username, password, redirect, setMessage, setIsError },
+      payload: { username, password, navigate, loginErr },
     })
+  }
+
+  // Setting and displaying login alert messsage
+  const loginErr = (show = false, msg = '') => {
+    console.log('input error')
+    dispatch({ type: 'LOGIN_ERR', payload: { show, msg } })
   }
 
   const logoutAcc = () => {
@@ -131,6 +138,7 @@ const AppProvider = ({ children }) => {
         toggleWishlist,
         toggleCart,
         closeModal,
+        loginErr,
       }}
     >
       {children}

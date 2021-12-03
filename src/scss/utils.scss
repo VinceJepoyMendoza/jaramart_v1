@@ -185,7 +185,17 @@ section {
     font-size: $fntS-5;
   }
 
-  input {
+  input,
+  textarea {
     font-size: $fntS-3;
+  }
+}
+
+@media screen and (max-width: $lg) {
+  .modal {
+    width: 85%;
+    & > a {
+      width: 80%;
+    }
   }
 }
