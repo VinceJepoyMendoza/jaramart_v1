@@ -19,7 +19,7 @@ const Category = () => {
             <span
               key={`category-${id}`}
               ref={categoryBtn}
-              onClick={() => navigate(`/category/${title}`)}
+              onClick={() => navigate(`/category/${title}`, { replace: true })}
             >
               <h1>{title}</h1>
               <img src={img} alt={title} />

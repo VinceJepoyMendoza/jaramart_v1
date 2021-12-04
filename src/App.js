@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from 'react-router-dom'
+import { useGlobalContext } from './context'
 import ScrollToTopBtn from './components/ScrollToTopBtn'
 
 // Import pages
@@ -22,6 +23,13 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 const App = () => {
+  const { fetchData } = useGlobalContext()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 })
+    fetchData()
+  }, [fetchData])
+
   return (
     <main>
       <Router>

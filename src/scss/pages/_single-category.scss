@@ -1,9 +1,18 @@
 //  Products from a single category
 
 .cgry-products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 1em;
-  justify-content: center;
-  margin: 0 1.5rem;
+  &-content {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(250px, 1fr));
+    gap: 1em;
+    justify-content: center;
+
+    article {
+      padding: 2rem 1rem;
+      img {
+        height: 180px;
+        width: 50%;
+      }
+    }
+  }
 }

@@ -91,7 +91,7 @@ const Reducer = (state, action) => {
       loginErr(true, 'Please fill up the following')
     } else if (username === name && password === passDb) {
       // Redirect to home page (Logged in)
-      navigate(-1)
+      navigate('/welcome', { replace: true })
       return {
         ...state,
         isLoggedIn: true,

@@ -18,16 +18,20 @@ const WishList = () => {
   return isLoading ? (
     <Loading />
   ) : (
-    <section className='wishlist'>
-      {wishlist.map((product) => {
-        const { id, title, image } = product
-        return (
-          <article className='wishlist-content' key={`wishlist product ${id}`}>
-            <img src={image} alt={title} />
-            <ProductsBtn {...product} />
-          </article>
-        )
-      })}
+    <section className='wishlist '>
+      <div className='container'>
+        <div className='wishlist-content'>
+          {wishlist.map((product) => {
+            const { id, title, image } = product
+            return (
+              <article className='product-card' key={`wishlist product ${id}`}>
+                <img src={image} alt={title} />
+                <ProductsBtn {...product} />
+              </article>
+            )
+          })}
+        </div>
+      </div>
     </section>
   )
 }

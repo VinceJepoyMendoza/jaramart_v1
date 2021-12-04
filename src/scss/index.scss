@@ -3,9 +3,9 @@
 @import './utils.scss';
 
 // Import components
+@import './components/mixins';
 @import './components/animation';
 @import './components/buttons';
-@import './components/mixins';
 @import './components/typography';
 
 // Import home page component

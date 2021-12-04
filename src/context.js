@@ -15,8 +15,8 @@ const initialState = {
   wishlist: [],
   cart: [],
   isModalOpen: false,
-  isLoading: false,
-  isLoggedIn: true,
+  isLoading: true,
+  isLoggedIn: false,
   loginAlert: { show: false, msg: '' },
   // productsY: 0,
 }
@@ -49,14 +49,6 @@ const AppProvider = ({ children }) => {
       console.log('fetching data from api error')
     }
   }, [url, categoriesUrl])
-
-  // Getting all the data from API
-  useEffect(() => {
-    // Force refreshing to top
-    window.scrollTo({ top: 0 })
-    loading()
-    fetchData()
-  }, [fetchData])
 
   // Collect wishlist and cart
   useEffect(() => {
