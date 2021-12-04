@@ -63,13 +63,84 @@ const Reducer = (state, action) => {
     console.log('toggle cart')
     const newProd = state.products.map((currProd) => {
       if (currProd.id === action.payload) {
-        return { ...currProd, isInCart: !currProd.isInCart }
+        return { ...currProd, isInCart: !currProd.isInCart, amount: 1 }
       }
       return { ...currProd }
     })
     return {
       ...state,
       products: newProd,
+    }
+  }
+
+  // Clear cart
+  if (action.type === 'CLEAR_CART') {
+    const newData = state.products.map((prod) => {
+      return { ...prod, isInCart: false }
+    })
+    console.log('cart cleared')
+    return {
+      ...state,
+      products: newData,
+    }
+  }
+
+  // Remove single product from cart
+  if (action.type === 'REMOVE_CART_ITEM') {
+    const newData = state.products.map((prod) => {
+      if (prod.id === action.payload) {
+        return {
+          ...prod,
+          isInCart: false,
+        }
+      }
+      return { ...prod }
+    })
+
+    return {
+      ...state,
+      products: newData,
+    }
+  }
+
+  // Toggling amount
+  if (action.type === 'TOGGLE_AMOUNT') {
+    const { id, type } = action.payload
+    const newData = state.products.map((item) => {
+      // Checking if the item clicked id matches the current id
+      if (item.id === id) {
+        // Checking actions
+        if (type === 'inc') {
+          // increase
+          return { ...item, amount: item.amount + 1 }
+        }
+        if (type === 'dec') {
+          // Set isInCart to false once reach < 1
+          if (item.amount <= 1) {
+            return { ...item, isInCart: false }
+          }
+          // decrease
+          return { ...item, amount: item.amount - 1 }
+        }
+      }
+
+      return item
+    })
+    return {
+      ...state,
+      products: newData,
+    }
+  }
+
+  if (action.type === 'GET_PRODUCT_TOTAL') {
+    console.log("calculating product's total")
+    // const newData = action.payload.map((item) => {
+    //   console.log('hello world')
+    //   return item
+    // })
+    return {
+      ...state,
+      // cart: newData,
     }
   }
 

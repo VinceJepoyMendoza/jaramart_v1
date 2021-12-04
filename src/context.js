@@ -16,7 +16,7 @@ const initialState = {
   cart: [],
   isModalOpen: false,
   isLoading: true,
-  isLoggedIn: false,
+  isLoggedIn: true,
   loginAlert: { show: false, msg: '' },
   // productsY: 0,
 }
@@ -32,8 +32,15 @@ const AppProvider = ({ children }) => {
     try {
       const resp = await fetch(url)
       const data = await resp.json()
+      // Adding more product properties
       const finalData = await data.map((currProd) => {
-        return { ...currProd, amount: 1, isInWishlist: false, isInCart: false }
+        return {
+          ...currProd,
+          amount: 1,
+          isInWishlist: false,
+          isInCart: false,
+          total: 0,
+        }
       })
       dispatch({ type: 'GET_PRODUCTS', payload: finalData })
     } catch (error) {
@@ -54,15 +61,6 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: 'COLLECT_INTEREST' })
   }, [state.products])
-
-  // useEffect(() => {
-  //   const prodOffset = productsOffsetY.current.offsetTop
-  //   // Get products Y location
-  //   dispatch({
-  //     type: 'LOCATE_PRODUCTS',
-  //     payload: prodOffset,
-  //   })
-  // }, [productsOffsetY])
 
   const getCategoryItems = useCallback((cgryTitle) => {
     dispatch({ type: 'GET_CATEGORY_ITEMS', payload: cgryTitle })
@@ -102,6 +100,26 @@ const AppProvider = ({ children }) => {
       dispatch({ type: 'LOG_FIRST' })
     }
   }
+
+  // Clear cart
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' })
+  }
+
+  // Remove single item from cart
+  const removeCartItem = (id) => {
+    dispatch({ type: 'REMOVE_CART_ITEM', payload: id })
+  }
+
+  // Toggle amount
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
+  }
+
+  // Get certain product's total
+  const getProductTotal = useCallback((cart) => {
+    dispatch({ type: 'GET_PRODUCT_TOTAL', payload: cart })
+  }, [])
 
   // const scrollToProducts = () => {
   //   window.scrollTo({
@@ -152,6 +170,10 @@ const AppProvider = ({ children }) => {
         toggleCart,
         closeModal,
         loginErr,
+        clearCart,
+        removeCartItem,
+        toggleAmount,
+        getProductTotal,
         // scrollToProducts,
         // productsOffsetY,
       }}

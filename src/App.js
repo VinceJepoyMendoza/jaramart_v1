@@ -27,6 +27,7 @@ const App = () => {
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
+    // Fetch data every page refresh
     fetchData()
   }, [fetchData])
 

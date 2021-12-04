@@ -17,18 +17,15 @@ const ProductOV = () => {
     <Loading />
   ) : (
     <>
-      <div className='product-overview__discount'>
-        <h4>
-          Get up to 25% discount this coming christmas only here at{' '}
-          <span>Jaramart</span>
-        </h4>
-      </div>
-      {products.map((currProd) => {
-        if (currProd.id === Number(prodId)) {
-          return <Overview {...currProd} key={currProd.id} />
-        }
-        return null
-      })}
+      <DiscountStrip />
+      <section className='product-overview'>
+        {products.map((currProd) => {
+          if (currProd.id === Number(prodId)) {
+            return <Overview {...currProd} key={currProd.id} />
+          }
+          return null
+        })}
+      </section>
     </>
   )
 }
@@ -57,7 +54,7 @@ const Overview = ({
   }
 
   return (
-    <section className='product-overview'>
+    <>
       <div className='product-overview-content'>
         <img
           src={image}
@@ -105,7 +102,18 @@ const Overview = ({
           </p>
         </div>
       </div>
-    </section>
+    </>
+  )
+}
+
+export const DiscountStrip = () => {
+  return (
+    <div className='product-overview__discount'>
+      <h4>
+        Get up to 25% discount this coming christmas only here at{' '}
+        <span>Jaramart</span>
+      </h4>
+    </div>
   )
 }
 

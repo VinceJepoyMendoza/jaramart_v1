@@ -1,50 +1,44 @@
 import React from 'react'
 
-const PrdInput = () => {
-  const selectColor = (msg) => {
-    console.log(msg)
+const PrdInput = ({ colors, sizes, id }) => {
+  const selectColor = (event) => {
+    console.log(event.target.name)
+    console.log(event.target.value)
   }
 
   return (
     <form>
-      <div className='product-overview-content__item__color'>
-        <h4>Color</h4>
-        <label>
-          black
-          <input
-            type='radio'
-            name='color'
-            onChange={() => selectColor('black')}
-          />
-        </label>
-        <label>
-          white
-          <input
-            type='radio'
-            name='color'
-            onChange={() => selectColor('white')}
-          />
-        </label>
-        <label>
-          blue
-          <input
-            type='radio'
-            name='color'
-            onChange={() => selectColor('blue')}
-          />
-        </label>
+      <div className='cart-colors'>
+        <b>Color: </b>
+        {colors.map((color, index) => {
+          return (
+            <label
+              key={index}
+              className='btn-custom-radio'
+              // style={{ background: `${color}` }}
+            >
+              {color}
+              <input
+                type='radio'
+                name={`cart${id}`}
+                onChange={selectColor}
+                value={color}
+                // style={{ background: `${color}` }}
+              />
+            </label>
+          )
+        })}
       </div>
-      <div className='product-overview-content__item__size'>
-        <h4>Size</h4>
+      <div className='cart-sizes'>
+        <b>Size: </b>
         <select>
-          <option value='xxl'>xxl</option>
-          <option value='xl'>xl</option>
-          <option value='l'>l</option>
-          <option value='m' checked>
-            m
-          </option>
-          <option value='sm'>sm</option>
-          <option value='xsm'>xsm</option>
+          {sizes.map((sizes, index) => {
+            return (
+              <option value={sizes} key={index}>
+                {sizes}
+              </option>
+            )
+          })}
         </select>
       </div>
     </form>

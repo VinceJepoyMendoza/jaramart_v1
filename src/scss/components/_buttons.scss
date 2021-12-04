@@ -102,3 +102,31 @@
     transform: translate(-50%, -50%);
   }
 }
+
+.btn-cart-header {
+  border-radius: $radius-sm;
+  border: $border-size solid #000;
+  width: 200px;
+
+  &:hover,
+  &:focus {
+    @include clearBtnHover;
+  }
+}
+
+.btn-cart-remove {
+  position: absolute;
+  top: 16px;
+  right: 10px;
+}
+
+// .btn-custom-radio {
+//   border-radius: 50%;
+//   margin-right: 0.5rem;
+
+//   // input {
+//   //   opacity: 0;
+//   //   width: 25px;
+//   //   height: 25px;
+//   // }
+// }

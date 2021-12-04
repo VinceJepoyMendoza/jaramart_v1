@@ -76,3 +76,15 @@
 @mixin inputOutline {
   outline: 1px solid $primary;
 }
+
+@mixin card {
+  border-radius: $radius;
+  @include shadow-sm;
+  @include border-sm;
+}
+
+@mixin clearBtnHover {
+  background: $primary;
+  border: $border-size solid transparent;
+  color: #fff;
+}
