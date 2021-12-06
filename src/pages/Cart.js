@@ -116,7 +116,7 @@ const ProductDetails = () => {
 }
 
 const OrderSummary = () => {
-  const { cart, cartCheckOut } = useGlobalContext()
+  const { cart } = useGlobalContext()
   return (
     <aside>
       <h3>ORDER SUMMARY</h3>
@@ -136,7 +136,12 @@ const OrderSummary = () => {
         <p>Total</p>
         <p>${cart.total}</p>
       </div>
-      <Link to='/checkout' className='btn' onClick={() => cartCheckOut(cart)}>
+      <Link
+        to='/checkout'
+        replace
+        className='btn'
+        // onClick={() => cartCheckOut(cart)}
+      >
         Check out
       </Link>
     </aside>
@@ -144,7 +149,7 @@ const OrderSummary = () => {
 }
 
 const CartBtn = () => {
-  const { clearCart, cart, cartCheckOut } = useGlobalContext()
+  const { clearCart, cart } = useGlobalContext()
 
   return (
     <div className='btn-cart'>
@@ -159,8 +164,9 @@ const CartBtn = () => {
       <h3>Cart Total: ${cart.total}</h3>
       <Link
         to='/checkout'
+        replace
         className='btn btn-cart-header cart-checkout'
-        onClick={() => cartCheckOut(cart)}
+        // onClick={() => cartCheckOut(cart)}
       >
         Checkout
       </Link>
