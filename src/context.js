@@ -37,9 +37,9 @@ const AppProvider = ({ children }) => {
         return {
           ...currProd,
           amount: 1,
+          total: currProd.price,
           isInWishlist: false,
           isInCart: false,
-          total: 0,
         }
       })
       dispatch({ type: 'GET_PRODUCTS', payload: finalData })
@@ -60,6 +60,7 @@ const AppProvider = ({ children }) => {
   // Collect wishlist and cart
   useEffect(() => {
     dispatch({ type: 'COLLECT_INTEREST' })
+    // dispatch({ type: 'GET_CART_TOTAL' })
   }, [state.products])
 
   const getCategoryItems = useCallback((cgryTitle) => {
@@ -116,11 +117,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
   }
 
-  // Get certain product's total
-  const getProductTotal = useCallback((cart) => {
-    dispatch({ type: 'GET_PRODUCT_TOTAL', payload: cart })
-  }, [])
-
   // const scrollToProducts = () => {
   //   window.scrollTo({
   //     top: state.productsY,
@@ -173,7 +169,6 @@ const AppProvider = ({ children }) => {
         clearCart,
         removeCartItem,
         toggleAmount,
-        getProductTotal,
         // scrollToProducts,
         // productsOffsetY,
       }}

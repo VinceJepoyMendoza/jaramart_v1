@@ -35,12 +35,22 @@ const Reducer = (state, action) => {
 
   // Retrieving all products from wishlist
   if (action.type === 'COLLECT_INTEREST') {
+    // Collecting wishes
     const wishes = state.products.filter((currProd) => currProd.isInWishlist)
-    const inCart = state.products.filter((currProd) => currProd.isInCart)
+    // Filtering cart
+    const initCart = state.products.filter((currProd) => currProd.isInCart)
+    let cartTotal = 0
+    // Calculating cart
+    const inCart = initCart.map((item) => {
+      const total = item.total * item.amount
+      cartTotal += total
+
+      return { ...item, total: parseFloat(total).toFixed(2) }
+    })
     return {
       ...state,
       wishlist: wishes,
-      cart: inCart,
+      cart: { total: parseFloat(cartTotal).toFixed(2), inCart },
     }
   }
 
@@ -63,7 +73,12 @@ const Reducer = (state, action) => {
     console.log('toggle cart')
     const newProd = state.products.map((currProd) => {
       if (currProd.id === action.payload) {
-        return { ...currProd, isInCart: !currProd.isInCart, amount: 1 }
+        return {
+          ...currProd,
+          isInCart: !currProd.isInCart,
+          amount: 1,
+          total: currProd.price,
+        }
       }
       return { ...currProd }
     })
@@ -108,19 +123,26 @@ const Reducer = (state, action) => {
     const { id, type } = action.payload
     const newData = state.products.map((item) => {
       // Checking if the item clicked id matches the current id
-      if (item.id === id) {
+      if (item.id === id && item.isInCart) {
         // Checking actions
         if (type === 'inc') {
           // increase
-          return { ...item, amount: item.amount + 1 }
+
+          return {
+            ...item,
+            amount: item.amount + 1,
+          }
         }
         if (type === 'dec') {
           // Set isInCart to false once reach < 1
           if (item.amount <= 1) {
-            return { ...item, isInCart: false }
+            return { ...item, isInCart: false, total: item.price }
           }
           // decrease
-          return { ...item, amount: item.amount - 1 }
+          return {
+            ...item,
+            amount: item.amount - 1,
+          }
         }
       }
 
@@ -129,18 +151,6 @@ const Reducer = (state, action) => {
     return {
       ...state,
       products: newData,
-    }
-  }
-
-  if (action.type === 'GET_PRODUCT_TOTAL') {
-    console.log("calculating product's total")
-    // const newData = action.payload.map((item) => {
-    //   console.log('hello world')
-    //   return item
-    // })
-    return {
-      ...state,
-      // cart: newData,
     }
   }
 

@@ -29,7 +29,7 @@ const Navbar = () => {
             </Link>
             <Link to='/cart' className='iconScale'>
               <BsCart3 />
-              <p className='badge'>{cart.length}</p>
+              <p className='badge'>{cart.inCart?.length}</p>
             </Link>
             <Link to='/welcome' onClick={logoutAcc} replace>
               Log out

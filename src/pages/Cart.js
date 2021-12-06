@@ -7,18 +7,13 @@ import { GrClose } from 'react-icons/gr'
 import { useGlobalContext } from '../context'
 
 const Cart = () => {
-  const { cart, isLoading, getProductTotal } = useGlobalContext()
+  const { cart, isLoading } = useGlobalContext()
 
   useEffect(() => {
     window.scrollTo({ top: 0 })
   }, [])
 
-  // Get single product's total
-  useEffect(() => {
-    getProductTotal(cart)
-  }, [getProductTotal, cart])
-
-  if (!cart.length) {
+  if (!cart.inCart?.length) {
     return <EmptySelected title='products' page='cart' />
   }
 
@@ -54,13 +49,14 @@ const ProductDetails = () => {
 
   return (
     <div className='cart-content__products'>
-      {cart.map((product) => {
+      {cart.inCart.map((product) => {
         const {
           id,
           title,
           image,
           amount,
           price,
+          total,
           rating: { rate, count },
         } = product
         return (
@@ -81,6 +77,9 @@ const ProductDetails = () => {
                 </p>
                 <p>
                   <b>ID:</b> {id}
+                </p>
+                <p>
+                  <b>Price:</b> ${price}
                 </p>
                 <p>
                   <b>Rating: </b> {generateStars(rate)} ({count})
@@ -105,7 +104,7 @@ const ProductDetails = () => {
                     +
                   </button>
                 </span>
-                <h3>${price}</h3>
+                <h3>${total}</h3>
               </aside>
             </div>
           </article>
@@ -115,13 +114,13 @@ const ProductDetails = () => {
   )
 }
 
-const OrderSummary = () => {
+const OrderSummary = ({ cart }) => {
   return (
     <aside>
       <h3>ORDER SUMMARY</h3>
       <div>
         <p>SubTotal</p>
-        <p>$80.0</p>
+        <p>${cart.total}</p>
       </div>
       <div>
         <p>Estimated Shipping</p>
@@ -133,7 +132,7 @@ const OrderSummary = () => {
       </div>
       <div className='lead'>
         <p>Total</p>
-        <p>$80.0</p>
+        <p>${cart.total}</p>
       </div>
       <button type='button' className='btn'>
         Check out
@@ -143,7 +142,7 @@ const OrderSummary = () => {
 }
 
 const CartBtn = () => {
-  const { clearCart } = useGlobalContext()
+  const { clearCart, cart } = useGlobalContext()
 
   return (
     <div className='btn-cart'>
@@ -155,7 +154,7 @@ const CartBtn = () => {
       >
         Clear cart
       </button>
-      <h3>Cart Total: $500.00</h3>
+      <h3>Cart Total: ${cart.total}</h3>
       <button type='button' className='btn btn-cart-header cart-checkout'>
         Checkout
       </button>
