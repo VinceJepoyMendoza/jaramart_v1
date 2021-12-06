@@ -44,7 +44,6 @@ const Reducer = (state, action) => {
     const inCart = initCart.map((item) => {
       const total = item.total * item.amount
       cartTotal += total
-
       return { ...item, total: parseFloat(total).toFixed(2) }
     })
     return {
@@ -151,6 +150,15 @@ const Reducer = (state, action) => {
     return {
       ...state,
       products: newData,
+    }
+  }
+
+  // Cart checkout
+  if (action.type === 'CART_CHECK_OUT') {
+    console.log(`cart checkout`)
+    console.log(action.payload)
+    return {
+      ...state,
     }
   }
 

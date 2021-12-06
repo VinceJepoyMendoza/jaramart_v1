@@ -117,6 +117,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
   }
 
+  const cartCheckOut = (total) => {
+    dispatch({ type: 'CART_CHECK_OUT', payload: total })
+  }
+
   // const scrollToProducts = () => {
   //   window.scrollTo({
   //     top: state.productsY,
@@ -169,6 +173,7 @@ const AppProvider = ({ children }) => {
         clearCart,
         removeCartItem,
         toggleAmount,
+        cartCheckOut,
         // scrollToProducts,
         // productsOffsetY,
       }}

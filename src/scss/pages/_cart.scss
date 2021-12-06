@@ -96,10 +96,13 @@
         margin-bottom: 1rem;
       }
 
-      button {
+      a {
         width: 100%;
         border-radius: $radius-sm;
         border: $border-size solid #000;
+        display: block;
+        color: #000;
+        text-align: center;
 
         &:hover,
         &:focus {

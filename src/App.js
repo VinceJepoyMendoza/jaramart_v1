@@ -11,8 +11,9 @@ import ScrollToTopBtn from './components/ScrollToTopBtn'
 // Import pages
 import Home from './pages/Home'
 import Product from './pages/ProductOV'
-import Cart from './pages/Cart'
 import WishList from './pages/WishList'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Error from './pages/Error'
@@ -38,8 +39,9 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Navigate to='/welcome' />} />
           <Route path='/welcome' element={<Home />} />
-          <Route path='/cart' element={<Cart />} />
           <Route path='/wishlist' element={<WishList />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/checkout' element={<Checkout />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/category/:cgryTitle' element={<SingleCategory />} />

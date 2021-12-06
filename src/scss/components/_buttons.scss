@@ -107,6 +107,8 @@
   border-radius: $radius-sm;
   border: $border-size solid #000;
   width: 200px;
+  color: #000;
+  text-align: center;
 
   &:hover,
   &:focus {

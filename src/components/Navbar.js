@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className='navbar'>
+      <nav className='navbar' id='main-nav'>
         <div className='navbar-search'>
           <input type='text' id='search-input' placeholder='Search' />
           <FiSearch />

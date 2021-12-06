@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Loading from '../components/Loading'
 import EmptySelected from '../components/EmptySelected'
 import { BsStarFill } from 'react-icons/bs'
@@ -27,7 +28,7 @@ const Cart = () => {
         <CartBtn />
         <div className='cart-content'>
           <ProductDetails />
-          <OrderSummary cart={cart} />
+          <OrderSummary />
         </div>
       </section>
     </>
@@ -114,7 +115,8 @@ const ProductDetails = () => {
   )
 }
 
-const OrderSummary = ({ cart }) => {
+const OrderSummary = () => {
+  const { cart, cartCheckOut } = useGlobalContext()
   return (
     <aside>
       <h3>ORDER SUMMARY</h3>
@@ -134,15 +136,15 @@ const OrderSummary = ({ cart }) => {
         <p>Total</p>
         <p>${cart.total}</p>
       </div>
-      <button type='button' className='btn'>
+      <Link to='/checkout' className='btn' onClick={() => cartCheckOut(cart)}>
         Check out
-      </button>
+      </Link>
     </aside>
   )
 }
 
 const CartBtn = () => {
-  const { clearCart, cart } = useGlobalContext()
+  const { clearCart, cart, cartCheckOut } = useGlobalContext()
 
   return (
     <div className='btn-cart'>
@@ -155,9 +157,13 @@ const CartBtn = () => {
         Clear cart
       </button>
       <h3>Cart Total: ${cart.total}</h3>
-      <button type='button' className='btn btn-cart-header cart-checkout'>
+      <Link
+        to='/checkout'
+        className='btn btn-cart-header cart-checkout'
+        onClick={() => cartCheckOut(cart)}
+      >
         Checkout
-      </button>
+      </Link>
     </div>
   )
 }
