@@ -137,7 +137,7 @@ const OrderSummary = () => {
         <p>${cart.total}</p>
       </div>
       <Link
-        to='/checkout'
+        to='/cart/checkout'
         replace
         className='btn'
         // onClick={() => cartCheckOut(cart)}
@@ -163,7 +163,7 @@ const CartBtn = () => {
       </button>
       <h3>Cart Total: ${cart.total}</h3>
       <Link
-        to='/checkout'
+        to='/cart/checkout'
         replace
         className='btn btn-cart-header cart-checkout'
         // onClick={() => cartCheckOut(cart)}

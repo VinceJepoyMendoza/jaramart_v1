@@ -1,0 +1,97 @@
+// Receipt
+
+.receipt {
+  &-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    // border-radius: $radius-sm;
+
+    h3 {
+      margin-bottom: 1rem;
+    }
+
+    &__bill-from {
+      display: flex;
+      justify-content: space-between;
+
+      article {
+        padding: 2rem;
+        width: 100%;
+        border-bottom: $border-size solid #999;
+      }
+
+      aside {
+        background: $primary;
+        color: #fff;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+
+    &__bill-to {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+
+    & > table {
+      width: 100%;
+      padding: 1rem 0;
+      position: relative;
+      border-spacing: 0;
+
+      tr {
+        th {
+          text-align: left;
+          font-weight: 400;
+          background: $primary;
+          color: #fff;
+          padding: 5px 0;
+        }
+
+        td {
+          padding: 1rem 0;
+          border-bottom: $border-size dashed #999;
+        }
+
+        th,
+        td {
+          text-align: right;
+
+          &:first-child {
+            padding-left: 2rem;
+            text-align: left;
+          }
+
+          &:last-child {
+            padding-right: 2rem;
+          }
+        }
+      }
+    }
+
+    footer {
+      display: flex;
+      padding: 1rem 2rem;
+
+      table {
+        width: 40%;
+
+        tr {
+          text-align: right;
+          b {
+            font-weight: 500;
+          }
+
+          &:last-child {
+            font-size: $fntS-5;
+          }
+        }
+      }
+    }
+  }
+}

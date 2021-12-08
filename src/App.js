@@ -19,6 +19,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Error from './pages/Error'
 import SingleCategory from './pages/SingleCategory'
+import DummyPage from './pages/DummyPage'
 
 // Import navbar
 import Navbar from './components/Navbar'
@@ -42,12 +43,13 @@ const App = () => {
           <Route path='/welcome' element={<Home />} />
           <Route path='/wishlist' element={<WishList />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/cart/checkout' element={<Checkout />} />
           <Route path='/receipt' element={<Receipt />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/category/:cgryTitle' element={<SingleCategory />} />
           <Route path='/product/:prodId' element={<Product />} />
+          <Route path='/dummypage' element={<DummyPage />} />
           <Route path='*' element={<Error />} />
         </Routes>
         <Footer />

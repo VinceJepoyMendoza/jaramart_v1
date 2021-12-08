@@ -1,6 +1,6 @@
 // Footer
 
-footer {
+footer.main-footer {
   color: #fff;
   text-transform: capitalize;
 
@@ -107,7 +107,7 @@ footer {
 }
 
 @media screen and (min-width: $md) {
-  footer {
+  footer.main-footer {
     h3 {
       margin-bottom: 1rem;
       font-size: $fntS-5;
