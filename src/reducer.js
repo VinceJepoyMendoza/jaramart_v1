@@ -54,7 +54,6 @@ const Reducer = (state, action) => {
   }
 
   if (action.type === 'TOGGLE_WISHLIST') {
-    console.log('toggle wishtlist')
     const newProd = state.products.map((currProd) => {
       if (currProd.id === action.payload) {
         return { ...currProd, isInWishlist: !currProd.isInWishlist }
@@ -69,7 +68,6 @@ const Reducer = (state, action) => {
   }
 
   if (action.type === 'TOGGLE_CART') {
-    console.log('toggle cart')
     const newProd = state.products.map((currProd) => {
       if (currProd.id === action.payload) {
         return {
@@ -92,7 +90,6 @@ const Reducer = (state, action) => {
     const newData = state.products.map((prod) => {
       return { ...prod, isInCart: false }
     })
-    console.log('cart cleared')
     return {
       ...state,
       products: newData,
@@ -153,14 +150,28 @@ const Reducer = (state, action) => {
     }
   }
 
-  // Cart checkout
-  if (action.type === 'CART_CHECK_OUT') {
-    console.log(`cart checkout`)
-    console.log(action.payload)
+  if (action.type === 'CONFIRM_PAYMENT') {
+    const { cardNum, expiration, cvc, cardOwner, navigate, loginErr } =
+      action.payload
+    if (!cardNum || !expiration || !cvc || !cardOwner) {
+      loginErr(true, 'fill up all the form')
+    } else if (
+      cardNum === '4444-4444-4444-333' &&
+      expiration === '06/2021' &&
+      cvc === '4444' &&
+      cardOwner === 'jaramiah'
+    ) {
+      // Navigate to reciept
+      navigate('/receipt', { replace: true })
+    } else {
+      loginErr(true, 'card information does not match')
+    }
     return {
       ...state,
     }
   }
+
+  // Payment confirmation
 
   // Setting products offset Y
   // if (action.type === 'LOCATE_PRODUCTS') {
@@ -195,7 +206,6 @@ const Reducer = (state, action) => {
     const { show, msg } = action.payload
     return {
       ...state,
-      isLoggedIn: false,
       loginAlert: { show, msg },
     }
   }

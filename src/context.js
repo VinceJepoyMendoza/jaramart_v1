@@ -117,8 +117,12 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
   }
 
-  const cartCheckOut = (total) => {
-    dispatch({ type: 'CART_CHECK_OUT', payload: total })
+  // Payment confirmation
+  const confirmPayment = (cardNum, expiration, cvc, cardOwner, navigate) => {
+    dispatch({
+      type: 'CONFIRM_PAYMENT',
+      payload: { cardNum, expiration, cvc, cardOwner, navigate, loginErr },
+    })
   }
 
   // const scrollToProducts = () => {
@@ -144,7 +148,6 @@ const AppProvider = ({ children }) => {
 
   // Setting and displaying login alert messsage
   const loginErr = (show = false, msg = '') => {
-    console.log('input error')
     dispatch({ type: 'LOGIN_ERR', payload: { show, msg } })
   }
 
@@ -173,7 +176,7 @@ const AppProvider = ({ children }) => {
         clearCart,
         removeCartItem,
         toggleAmount,
-        cartCheckOut,
+        confirmPayment,
         // scrollToProducts,
         // productsOffsetY,
       }}

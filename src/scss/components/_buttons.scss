@@ -122,6 +122,19 @@
   right: 10px;
 }
 
+.btn-payment {
+  background: $primary;
+  width: 100%;
+  color: #fff;
+  border: $border-size solid transparent;
+
+  &:hover {
+    background: transparent;
+    border: $border-size solid $primary;
+    color: $primary;
+  }
+}
+
 // .btn-custom-radio {
 //   border-radius: 50%;
 //   margin-right: 0.5rem;

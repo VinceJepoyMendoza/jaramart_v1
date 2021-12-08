@@ -1,0 +1,82 @@
+// Cart checkout
+
+.checkout {
+  .container {
+    max-width: 1100px;
+  }
+
+  h3 {
+    font-weight: 400;
+    margin-bottom: 0.75em;
+  }
+
+  form {
+    position: relative;
+
+    small {
+      display: block;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    div {
+      margin-bottom: 1em;
+    }
+
+    input {
+      font-size: $fntS-4;
+      width: 100%;
+      border: $border-size solid rgba(#000, 0.2);
+      background: transparent;
+      @include inputHoverFocus;
+    }
+
+    // Client's infos
+    .checkout-infos {
+      width: 100%;
+      padding: 1rem 2rem;
+
+      &__contact {
+        margin-top: 2em;
+      }
+    }
+
+    // Payment details
+    aside {
+      width: 100%;
+      padding: 1rem 2rem;
+      @include border-sm;
+
+      .checkout-img {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        img {
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $lg) {
+  .checkout {
+    form {
+      .checkout-infos {
+        width: 60%;
+      }
+
+      aside {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40%;
+
+        img {
+          width: 60px;
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ import { IoMdClose } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 import { useGlobalContext } from '../context'
 
-const Modal = ({ open }) => {
+const Modal = () => {
   const { closeModal, isModalOpen } = useGlobalContext()
   const modalContainer = useRef(null)
 
@@ -25,10 +25,6 @@ const Modal = ({ open }) => {
       document.removeEventListener('mousedown', handler)
     }
   })
-
-  if (!open) {
-    return null
-  }
 
   // Modal
   return ReactDom.createPortal(

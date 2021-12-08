@@ -42,17 +42,7 @@
 @mixin inputFocus {
   transition: $transition;
   border: $border-size transparent solid;
-
-  &:hover,
-  &:focus {
-    border: $border-size $primary solid;
-    color: $primary;
-    outline: none;
-
-    &::placeholder {
-      color: $primary;
-    }
-  }
+  @include inputHoverFocus;
 }
 
 @mixin invertInputFocus {
@@ -65,10 +55,19 @@
     color: #fff;
     outline: none;
     background: transparent;
+  }
+}
 
-    // &::placeholder {
-    //   color: $primary;
-    // }
+@mixin inputHoverFocus {
+  &:hover,
+  &:focus {
+    border: $border-size $primary solid;
+    color: $primary;
+    outline: none;
+
+    &::placeholder {
+      color: $primary;
+    }
   }
 }
 
@@ -78,7 +77,7 @@
 }
 
 @mixin card {
-  border-radius: $radius;
+  border-radius: $radius-sm;
   @include shadow-sm;
   @include border-sm;
 }

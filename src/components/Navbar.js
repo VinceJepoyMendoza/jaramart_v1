@@ -42,7 +42,7 @@ const Navbar = () => {
           </div>
         )}
       </nav>
-      <Modal open={isModalOpen} />
+      {isModalOpen && <Modal open={isModalOpen} />}
     </>
   )
 }

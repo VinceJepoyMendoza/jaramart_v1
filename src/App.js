@@ -14,6 +14,7 @@ import Product from './pages/ProductOV'
 import WishList from './pages/WishList'
 import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
+import Receipt from './pages/Receipt'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Error from './pages/Error'
@@ -42,6 +43,7 @@ const App = () => {
           <Route path='/wishlist' element={<WishList />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/checkout' element={<Checkout />} />
+          <Route path='/receipt' element={<Receipt />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/category/:cgryTitle' element={<SingleCategory />} />

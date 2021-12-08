@@ -9,7 +9,7 @@ const LoginAlert = ({ msg, removeAlert }) => {
     return () => clearTimeout(timeout)
   }, [removeAlert])
 
-  return <small className='login-content-error'>{msg}</small>
+  return <small className='popup-error'>{msg}</small>
 }
 
 export default LoginAlert
