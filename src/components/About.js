@@ -2,6 +2,7 @@ import React from 'react'
 import { BsTruck } from 'react-icons/bs'
 import { MdOutlinePayment } from 'react-icons/md'
 import { RiCustomerService2Fill } from 'react-icons/ri'
+import { Link } from 'react-router-dom'
 
 const about = () => {
   return (
@@ -59,9 +60,9 @@ const SectionFooter = () => {
           open 24/7
         </span>
       </div>
-      <a href='/cart' className='btn'>
-        Shop Now
-      </a>
+      <Link to='/cart' replace className='btn'>
+        Shop now
+      </Link>
     </div>
   )
 }
