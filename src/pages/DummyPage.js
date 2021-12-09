@@ -1,7 +1,8 @@
 import React from 'react'
+import EmptySelected from '../components/EmptySelected'
 
 const DummyPage = () => {
-  return <div>Dummy page</div>
+  return <EmptySelected title='Content' page='Page' />
 }
 
 export default DummyPage

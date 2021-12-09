@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from './Modal'
 import { Link } from 'react-router-dom'
-import { FiSearch, FiHeart } from 'react-icons/fi'
+import { FiHeart } from 'react-icons/fi'
 import { BsCart3 } from 'react-icons/bs'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import { useGlobalContext } from '../context'
@@ -13,10 +13,10 @@ const Navbar = () => {
   return (
     <>
       <nav className='navbar' id='main-nav'>
-        <div className='navbar-search'>
+        {/* <div className='navbar-search'>
           <input type='text' id='search-input' placeholder='Search' />
           <FiSearch />
-        </div>
+        </div> */}
         <Link to='/welcome' className='logo'>
           Jaramart
           <HiOutlineShoppingBag />

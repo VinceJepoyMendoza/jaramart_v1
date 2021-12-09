@@ -1,10 +1,4 @@
-import React, {
-  useContext,
-  useReducer,
-  useEffect,
-  useCallback,
-  // useRef,
-} from 'react'
+import React, { useContext, useReducer, useEffect, useCallback } from 'react'
 import reducer from './reducer'
 
 const AppContext = React.createContext()
@@ -17,7 +11,7 @@ const initialState = {
   checkout: [],
   isModalOpen: false,
   isLoading: true,
-  isLoggedIn: true,
+  isLoggedIn: false,
   loginAlert: { show: false, msg: '' },
   // productsY: 0,
 }
