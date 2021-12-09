@@ -168,6 +168,7 @@ const Reducer = (state, action) => {
     }
     return {
       ...state,
+      checkout: state.cart,
     }
   }
 

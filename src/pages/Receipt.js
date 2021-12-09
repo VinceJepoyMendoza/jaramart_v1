@@ -52,25 +52,26 @@ const Receipt = () => {
           </aside>
         </div>
         <table className='receipt-content__items'>
-          <div className='primary-background'></div>
-          <tr className='header'>
-            <th>Items</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Amount</th>
-          </tr>
-          <tr>
-            <td>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</td>
-            <td>$109.95</td>
-            <td>3</td>
-            <td>$329.85</td>
-          </tr>
-          <tr>
-            <td>Mens Casual Premium Slim Fit T-Shirts</td>
-            <td>$22.3</td>
-            <td>3</td>
-            <td>$66.9</td>
-          </tr>
+          <tbody>
+            <tr className='header'>
+              <th>Items</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Amount</th>
+            </tr>
+            <tr>
+              <td>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</td>
+              <td>$109.95</td>
+              <td>3</td>
+              <td>$329.85</td>
+            </tr>
+            <tr>
+              <td>Mens Casual Premium Slim Fit T-Shirts</td>
+              <td>$22.3</td>
+              <td>3</td>
+              <td>$66.9</td>
+            </tr>
+          </tbody>
         </table>
         <footer>
           <div>
@@ -84,30 +85,32 @@ const Receipt = () => {
             </small>
           </div>
           <table>
-            <tr>
-              <td>
-                <b>Subtotal</b>
-              </td>
-              <td>$5000.00</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Tax rate</b>
-              </td>
-              <td>00%</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Tax</b>
-              </td>
-              <td>$00</td>
-            </tr>
-            <tr>
-              <td>
-                <b>Total</b>
-              </td>
-              <td>$5000.00</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <b>Subtotal</b>
+                </td>
+                <td>$5000.00</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Tax rate</b>
+                </td>
+                <td>00%</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Tax</b>
+                </td>
+                <td>$00</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Total</b>
+                </td>
+                <td>$5000.00</td>
+              </tr>
+            </tbody>
           </table>
         </footer>
       </div>

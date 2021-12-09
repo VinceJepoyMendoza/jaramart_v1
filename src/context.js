@@ -14,6 +14,7 @@ const initialState = {
   categories: [],
   wishlist: [],
   cart: [],
+  checkout: [],
   isModalOpen: false,
   isLoading: true,
   isLoggedIn: true,

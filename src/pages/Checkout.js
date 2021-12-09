@@ -20,13 +20,24 @@ const Checkout = () => {
   const cardOwner = useRef(null)
   const navigate = useNavigate()
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    confirmPayment(
+      cardNum.current.value,
+      expiration.current.value,
+      cvc.current.value,
+      cardOwner.current.value,
+      navigate
+    )
+  }
+
   return (
     <>
       <DiscountStrip />
       {!isLoggedIn && <Modal />}
       <section className='checkout'>
         <div className='container'>
-          <form>
+          <form onSubmit={handleSubmit}>
             {/* Client's info */}
             <div className='checkout-infos'>
               <h3>Shipping information</h3>
@@ -120,19 +131,7 @@ const Checkout = () => {
                   <input type='text' ref={cardOwner} />
                 </label>
               </div>
-              <button
-                type='button'
-                className='btn btn-payment'
-                onClick={() =>
-                  confirmPayment(
-                    cardNum.current.value,
-                    expiration.current.value,
-                    cvc.current.value,
-                    cardOwner.current.value,
-                    navigate
-                  )
-                }
-              >
+              <button type='submit' className='btn btn-payment'>
                 Confirm Payment of ${cart.total}
               </button>
             </aside>
