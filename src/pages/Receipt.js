@@ -67,7 +67,7 @@ const Receipt = () => {
               <th>Quantity</th>
               <th>Amount</th>
             </tr>
-            {/* {checkout.inCart?.map((item) => {
+            {checkout.inCart?.map((item) => {
               const { title, price, amount, total, id } = item
               return (
                 <tr key={id}>
@@ -77,7 +77,7 @@ const Receipt = () => {
                   <td>${total}</td>
                 </tr>
               )
-            })} */}
+            })}
           </tbody>
         </table>
         <footer>
