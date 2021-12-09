@@ -151,8 +151,15 @@ const Reducer = (state, action) => {
   }
 
   if (action.type === 'CONFIRM_PAYMENT') {
-    const { cardNum, expiration, cvc, cardOwner, navigate, loginErr } =
-      action.payload
+    const {
+      cardNum,
+      expiration,
+      cvc,
+      cardOwner,
+      clientInfo,
+      navigate,
+      loginErr,
+    } = action.payload
     if (!cardNum || !expiration || !cvc || !cardOwner) {
       loginErr(true, 'fill up all the form')
     } else if (
@@ -166,9 +173,11 @@ const Reducer = (state, action) => {
     } else {
       loginErr(true, 'card information does not match')
     }
+
+    const clientInfos = clientInfo.map((item) => item.current.value)
     return {
       ...state,
-      checkout: state.cart,
+      checkout: { ...state.cart, clientInfos },
     }
   }
 

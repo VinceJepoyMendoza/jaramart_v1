@@ -119,10 +119,25 @@ const AppProvider = ({ children }) => {
   }
 
   // Payment confirmation
-  const confirmPayment = (cardNum, expiration, cvc, cardOwner, navigate) => {
+  const confirmPayment = (
+    cardNum,
+    expiration,
+    cvc,
+    cardOwner,
+    clientInfo,
+    navigate
+  ) => {
     dispatch({
       type: 'CONFIRM_PAYMENT',
-      payload: { cardNum, expiration, cvc, cardOwner, navigate, loginErr },
+      payload: {
+        cardNum,
+        expiration,
+        cvc,
+        cardOwner,
+        clientInfo,
+        navigate,
+        loginErr,
+      },
     })
   }
 

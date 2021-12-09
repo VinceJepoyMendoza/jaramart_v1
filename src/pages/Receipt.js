@@ -1,15 +1,23 @@
 import React from 'react'
+import { useGlobalContext } from '../context'
 
 const Receipt = () => {
+  const { checkout } = useGlobalContext()
+  const client = checkout.clientInfos
+
   // Dates
   const today = new Date()
   const dd = today.getDate()
   const mm = String(today.getMonth() + 1).padStart(2, '0')
   const yyyy = today.getFullYear()
 
+  const taxRate = 5
+  const cartTotal = parseFloat(checkout.total)
+  let taxTotal = cartTotal * (taxRate / 100)
+  const overAllTotal = cartTotal + taxTotal
+
   return (
     <section className='receipt'>
-      {/* <h2>Thank you for patronage</h2> */}
       <div className='receipt-content'>
         <div className='receipt-content__bill-from'>
           <article>
@@ -22,7 +30,7 @@ const Receipt = () => {
           </article>
           <aside>
             <p>Due</p>
-            <h2>$5000.00</h2>
+            <h2>${checkout.total}</h2>
           </aside>
         </div>
         <div className='receipt-content__bill-to'>
@@ -30,11 +38,11 @@ const Receipt = () => {
             <small>
               <b>BILL TO:</b>
             </small>
-            <h4>Javier Sta. Cruz</h4>
-            <p>Rolando R. Andaya Hwy</p>
-            <p>Ragay, Camarines Sur</p>
-            <p>Philippines</p>
-            <p>4410</p>
+            <h4>{`${client[0]} ${client[1]}` || `Javier Fernando`}</h4>
+            <p>{client[2] || `Rolando R. Andaya Hwy`}</p>
+            <p>{client[3] || `Ragay, Camarines Sur`}</p>
+            <p>{client[4] || `Philippines`}</p>
+            <p>{client[5] || `4410`}</p>
           </article>
           <aside>
             <small>
@@ -59,18 +67,17 @@ const Receipt = () => {
               <th>Quantity</th>
               <th>Amount</th>
             </tr>
-            <tr>
-              <td>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</td>
-              <td>$109.95</td>
-              <td>3</td>
-              <td>$329.85</td>
-            </tr>
-            <tr>
-              <td>Mens Casual Premium Slim Fit T-Shirts</td>
-              <td>$22.3</td>
-              <td>3</td>
-              <td>$66.9</td>
-            </tr>
+            {/* {checkout.inCart?.map((item) => {
+              const { title, price, amount, total, id } = item
+              return (
+                <tr key={id}>
+                  <td>{title}</td>
+                  <td>${price}</td>
+                  <td>{amount}</td>
+                  <td>${total}</td>
+                </tr>
+              )
+            })} */}
           </tbody>
         </table>
         <footer>
@@ -90,25 +97,25 @@ const Receipt = () => {
                 <td>
                   <b>Subtotal</b>
                 </td>
-                <td>$5000.00</td>
+                <td>${checkout.total}</td>
               </tr>
               <tr>
                 <td>
                   <b>Tax rate</b>
                 </td>
-                <td>00%</td>
+                <td>{taxRate}%</td>
               </tr>
               <tr>
                 <td>
                   <b>Tax</b>
                 </td>
-                <td>$00</td>
+                <td>${taxTotal.toFixed(2)}</td>
               </tr>
               <tr>
                 <td>
                   <b>Total</b>
                 </td>
-                <td>$5000.00</td>
+                <td>${overAllTotal.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>

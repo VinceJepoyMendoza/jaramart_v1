@@ -14,10 +14,28 @@ import paypal from '../img/banks/Paypal-Logo.jpg'
 const Checkout = () => {
   const { cart, confirmPayment, isLoggedIn, loginAlert, loginErr } =
     useGlobalContext()
+  // Bank infos
   const cardNum = useRef(null)
   const expiration = useRef(null)
   const cvc = useRef(null)
   const cardOwner = useRef(null)
+  // Client's info
+  const fName = useRef(null)
+  const lName = useRef(null)
+  const address = useRef(null)
+  const city = useRef(null)
+  const country = useRef(null)
+  const postal = useRef(null)
+  const clientInfo = [fName, lName, address, city, country, postal]
+  // const clientInfo = {
+  //   firstName: fName.current.value || `Javier`,
+  //   lastName: lName.current.value || `Sta. Cruz`,
+  //   address: address.current.value || `Rolando R. Andaya Hwy`,
+  //   city: city.current.value || `Ragay, Camarines Sur`,
+  //   country: country.current.value || `Philippines`,
+  //   postal: postal.current.value || 4410,
+  // }
+
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
@@ -27,6 +45,7 @@ const Checkout = () => {
       expiration.current.value,
       cvc.current.value,
       cardOwner.current.value,
+      clientInfo,
       navigate
     )
   }
@@ -44,37 +63,37 @@ const Checkout = () => {
               <div>
                 <label>
                   <small>First Name</small>
-                  <input type='text' />
+                  <input type='text' ref={fName} />
                 </label>
               </div>
               <div>
                 <label>
                   <small>Last Name</small>
-                  <input type='text' />
+                  <input type='text' ref={lName} />
                 </label>
               </div>
               <div>
                 <label>
                   <small>Address</small>
-                  <input type='text' />
+                  <input type='text' ref={address} />
                 </label>
               </div>
               <div>
                 <label>
                   <small>City</small>
-                  <input type='text' />
+                  <input type='text' ref={city} />
                 </label>
               </div>
               <div>
                 <label>
                   <small>Country</small>
-                  <input type='text' />
+                  <input type='text' ref={country} />
                 </label>
               </div>
               <div>
                 <label>
                   <small>Postal Code</small>
-                  <input type='text' />
+                  <input type='text' ref={postal} />
                 </label>
               </div>
               {/* Client's contact info */}
