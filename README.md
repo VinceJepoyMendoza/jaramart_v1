@@ -15,12 +15,12 @@ Password: jaramiah123
 
 ### Shipping information and Payment details
 
-Shipping information could be dummy/anything\ 
-payment details are the following:\
+Shipping information could be dummy or anything\ 
+but payment details are the following:\
 card number: 4444-4444-4444-333\
 expiration date: 06/2021\
 cv code: 4444\
-card owner: jaramiah\
+card owner: jaramiah
 
 ## Technologies use to make Jaramart
 
