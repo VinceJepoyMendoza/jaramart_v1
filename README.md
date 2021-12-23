@@ -16,7 +16,8 @@ Password: jaramiah123
 ### Shipping information and Payment details
 
 Shipping information could be dummy or anything\ 
-but payment details are the following:\
+But payment details are the following:\
+
 card number: 4444-4444-4444-333\
 expiration date: 06/2021\
 cv code: 4444\
